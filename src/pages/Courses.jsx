@@ -13,7 +13,7 @@ export default function CoursesSection() {
       category: "AI",
       title: "Master Artificial Intelligence and Machine Learning",
       lessons: 60,
-      price: "5400",
+      price: "5399",
       image: "https://images.unsplash.com/photo-1677442136019-21780ecad995?w=800&q=80",
       tag: "AI",
       badge: "Newly Added"
@@ -23,7 +23,7 @@ export default function CoursesSection() {
       category: "ML",
       title: "Deep Learning and Neural Networks",
       lessons: 55,
-      price: "5400",
+      price: "5399",
       image: "https://images.unsplash.com/photo-1555949963-aa79dcee981c?w=800&q=80",
       tag: "ML"
     },
@@ -32,7 +32,7 @@ export default function CoursesSection() {
       category: "Data Analytics",
       title: "Data Science and Analytics Fundamentals",
       lessons: 50,
-      price: "5400",
+      price: "5399",
       image: "https://images.unsplash.com/photo-1551288049-bebda4e38f71?w=800&q=80",
       tag: "Data Analytics",
       badge: "Recommended"
@@ -42,7 +42,7 @@ export default function CoursesSection() {
       category: "AI",
       title: "Natural Language Processing with Python",
       lessons: 38,
-      price: "5400",
+      price: "5399",
       image: "https://images.unsplash.com/photo-1531746790731-6c087fecd65a?w=800&q=80",
       tag: "AI"
     },
@@ -51,7 +51,7 @@ export default function CoursesSection() {
       category: "ML",
       title: "Computer Vision and Image Recognition",
       lessons: 48,
-      price: "5400",
+      price: "5399",
       image: "https://images.unsplash.com/photo-1535378917042-10a22c95931a?w=800&q=80",
       tag: "ML",
       badge: "Newly Added"
@@ -61,7 +61,7 @@ export default function CoursesSection() {
       category: "Data Analytics",
       title: "Advanced SQL and Database Management",
       lessons: 44,
-      price: "5400",
+      price: "5399",
       image: "https://images.unsplash.com/photo-1460925895917-afdab827c52f?w=800&q=80",
       tag: "Data Analytics"
     }

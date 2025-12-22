@@ -5,7 +5,7 @@
       "level": "BEGINNER LEVEL",
       "title": "Complete C Programming Bootcamp",
       "description": "Master C programming fundamentals including pointers, memory management, and data structures from scratch.",
-      "price": "₹399",
+      "price": "₹5,399",
       "image": "https://images.unsplash.com/photo-1517694712202-14dd9538aa97?w=800&q=80",
       "tags": ["c programming", "programming", "c"]
     },
@@ -14,7 +14,7 @@
       "level": "INTERMEDIATE LEVEL",
       "title": "Advanced C Programming & System Programming",
       "description": "Learn advanced C concepts, system-level programming, and build robust applications with professional techniques.",
-      "price": "₹499",
+      "price": "₹5,399",
       "image": "https://images.unsplash.com/photo-1555066931-4365d14bab8c?w=800&q=80",
       "tags": ["c programming", "advanced", "system programming"]
     },
@@ -23,7 +23,7 @@
       "level": "BEGINNER LEVEL",
       "title": "C++ Programming from Beginner to Advanced",
       "description": "Learn C++ programming from basics to advanced OOP concepts, STL, and modern C++ features.",
-      "price": "₹549",
+      "price": "₹5,399",
       "image": "https://images.unsplash.com/photo-1515879218367-8466d910aaa4?w=800&q=80",
       "tags": ["c++", "cpp", "programming", "oop"]
     },
@@ -32,7 +32,7 @@
       "level": "ADVANCED LEVEL",
       "title": "Modern C++ Design Patterns & Best Practices",
       "description": "Master advanced C++ concepts including templates, design patterns, and performance optimization.",
-      "price": "₹649",
+      "price": "₹5,399",
       "image": "https://images.unsplash.com/photo-1542831371-29b0f74f9713?w=800&q=80",
       "tags": ["c++", "design patterns", "advanced"]
     },
@@ -41,7 +41,7 @@
       "level": "BEGINNER LEVEL",
       "title": "Complete Java Programming Masterclass",
       "description": "Learn Java from scratch including OOP, collections, multithreading, and build real-world applications.",
-      "price": "₹599",
+      "price": "₹5,399",
       "image": "https://images.unsplash.com/photo-1517694712202-14dd9538aa97?w=800&q=80",
       "tags": ["java", "programming", "oop"]
     },
@@ -50,7 +50,7 @@
       "level": "INTERMEDIATE LEVEL",
       "title": "Spring Boot & Microservices with Java",
       "description": "Build enterprise-level applications using Spring Boot framework and microservices architecture.",
-      "price": "₹699",
+      "price": "₹5,399",
       "image": "https://images.unsplash.com/photo-1555099962-4199c345e5dd?w=800&q=80",
       "tags": ["java", "spring boot", "microservices"]
     },
@@ -59,7 +59,7 @@
       "level": "BEGINNER LEVEL",
       "title": "Complete Python Bootcamp: Go from zero to hero",
       "description": "Master Python programming from basics to advanced topics with hands-on projects and real-world applications.",
-      "price": "₹499",
+      "price": "₹5,399",
       "image": "https://images.unsplash.com/photo-1526379095098-d400fd0bf935?w=800&q=80",
       "tags": ["python", "programming", "beginner"]
     },
@@ -68,7 +68,7 @@
       "level": "ADVANCED LEVEL",
       "title": "Python Django - The Practical Guide",
       "description": "Build professional web applications with Django framework and master full-stack development.",
-      "price": "₹599",
+      "price": "₹5,399",
       "image": "https://images.unsplash.com/photo-1555099962-4199c345e5dd?w=800&q=80",
       "tags": ["python", "django", "web development"]
     },
@@ -77,7 +77,7 @@
       "level": "BEGINNER LEVEL",
       "title": "Modern JavaScript from Beginner to Advanced",
       "description": "Master JavaScript ES6+, DOM manipulation, async programming, and modern web development techniques.",
-      "price": "₹529",
+      "price": "₹5,399",
       "image": "https://images.unsplash.com/photo-1627398242454-45a1465c2479?w=800&q=80",
       "tags": ["javascript", "js", "web development"]
     },
@@ -86,7 +86,7 @@
       "level": "INTERMEDIATE LEVEL",
       "title": "JS - The Complete Guide",
       "description": "Build modern, reactive web applications with React including hooks, context API, and Redux.",
-      "price": "₹599",
+      "price": "₹5,399",
       "image": "https://images.unsplash.com/photo-1633356122544-f134324a6cee?w=800&q=80",
       "tags": ["javascript", "react", "frontend"]
     },
@@ -95,7 +95,7 @@
       "level": "BEGINNER LEVEL",
       "title": "PHP Development Complete Course",
       "description": "Learn PHP from basics and build dynamic websites with MySQL database integration.",
-      "price": "₹449",
+      "price": "₹5,399",
       "image": "https://images.unsplash.com/photo-1599507593499-a3f7d7d97667?w=800&q=80",
       "tags": ["php", "mysql", "web development"]
     },
@@ -104,7 +104,7 @@
       "level": "ADVANCED LEVEL",
       "title": "Laravel Framework - Modern PHP Development",
       "description": "Master Laravel framework and build robust, scalable web applications with modern PHP practices.",
-      "price": "₹579",
+      "price": "₹5,399",
       "image": "https://images.unsplash.com/photo-1555949963-aa79dcee981c?w=800&q=80",
       "tags": ["php", "laravel", "framework"]
     }
@@ -115,7 +115,7 @@
       "level": "BEGINNER LEVEL",
       "title": "Complete Full Stack Web Development Bootcamp",
       "description": "Learn HTML, CSS, JavaScript, Node.js, React, MongoDB and become a full-stack developer.",
-      "price": "₹799",
+      "price": "₹5,399",
       "image": "https://images.unsplash.com/photo-1498050108023-c5249f4df085?w=800&q=80",
       "tags": ["full stack", "web development", "mern"]
     },
@@ -124,7 +124,7 @@
       "level": "INTERMEDIATE LEVEL",
       "title": "MERN Stack Development Complete Guide",
       "description": "Build full-stack applications using MongoDB, Express, React, and Node.js with real projects.",
-      "price": "₹699",
+      "price": "₹5,399",
       "image": "https://images.unsplash.com/photo-1593720213428-28a5b9e94613?w=800&q=80",
       "tags": ["mern", "full stack", "react", "node"]
     },
@@ -133,7 +133,7 @@
       "level": "BEGINNER LEVEL",
       "title": "Complete Android App Development with Kotlin",
       "description": "Build professional Android applications using Kotlin and modern Android development practices.",
-      "price": "₹699",
+      "price": "₹5,399",
       "image": "https://images.unsplash.com/photo-1551650975-87deedd944c3?w=800&q=80",
       "tags": ["android", "kotlin", "mobile", "app development"]
     },
@@ -142,7 +142,7 @@
       "level": "INTERMEDIATE LEVEL",
       "title": "iOS App Development with Swift",
       "description": "Create stunning iOS applications using Swift and master Apple development ecosystem.",
-      "price": "₹749",
+      "price": "₹5,399",
       "image": "https://images.unsplash.com/photo-1512941937669-90a1b58e7e9c?w=800&q=80",
       "tags": ["ios", "swift", "mobile", "app development"]
     },
@@ -151,7 +151,7 @@
       "level": "INTERMEDIATE LEVEL",
       "title": "React Native - Cross Platform App Development",
       "description": "Build mobile apps for iOS and Android using React Native and JavaScript.",
-      "price": "₹699",
+      "price": "₹5,399",
       "image": "https://images.unsplash.com/photo-1555774698-0b77e0d5fac6?w=800&q=80",
       "tags": ["react native", "mobile", "cross platform"]
     }
@@ -162,7 +162,7 @@
       "level": "INTERMEDIATE LEVEL",
       "title": "Machine Learning A-Z: Complete Course",
       "description": "Master machine learning algorithms, regression, classification, and build predictive models.",
-      "price": "₹649",
+      "price": "₹5,399",
       "image": "https://images.unsplash.com/photo-1555949963-aa79dcee981c?w=800&q=80",
       "tags": ["machine learning", "ml", "ai"]
     },
@@ -171,7 +171,7 @@
       "level": "ADVANCED LEVEL",
       "title": "Advanced Machine Learning & AI Algorithms",
       "description": "Learn advanced ML techniques including ensemble methods, neural networks, and optimization.",
-      "price": "₹699",
+      "price": "₹5,399",
       "image": "https://images.unsplash.com/photo-1551288049-bebda4e38f71?w=800&q=80",
       "tags": ["machine learning", "advanced", "ai"]
     },
@@ -180,7 +180,7 @@
       "level": "ADVANCED LEVEL",
       "title": "Deep Learning Specialization: Neural Networks",
       "description": "Deep dive into neural networks, CNNs, RNNs, and advanced deep learning techniques with hands-on projects.",
-      "price": "₹749",
+      "price": "₹5,399",
       "image": "https://images.unsplash.com/photo-1655720828018-edd2daec9349?w=800&q=80",
       "tags": ["deep learning", "neural networks", "ai"]
     },
@@ -189,7 +189,7 @@
       "level": "EXPERT LEVEL",
       "title": "PyTorch & TensorFlow for Deep Learning",
       "description": "Master deep learning frameworks and build state-of-the-art neural network architectures.",
-      "price": "₹699",
+      "price": "₹5,399",
       "image": "https://images.unsplash.com/photo-1620712943543-bcc4688e7485?w=800&q=80",
       "tags": ["deep learning", "pytorch", "tensorflow"]
     },
@@ -198,7 +198,7 @@
       "level": "INTERMEDIATE LEVEL",
       "title": "Natural Language Processing with Transformers",
       "description": "Learn cutting-edge NLP techniques using transformer models and build real-world applications.",
-      "price": "₹479",
+      "price": "₹5,399",
       "image": "https://images.unsplash.com/photo-1531746790731-6c087fecd65a?w=800&q=80",
       "tags": ["nlp", "transformers", "ai"]
     },
@@ -207,7 +207,7 @@
       "level": "ADVANCED LEVEL",
       "title": "Computer Vision Masterclass with OpenCV",
       "description": "Master computer vision techniques and build intelligent image processing applications.",
-      "price": "₹499",
+      "price": "₹5,399",
       "image": "https://images.unsplash.com/photo-1535378620166-273708d44e4c?w=800&q=80",
       "tags": ["computer vision", "opencv", "ai"]
     }
@@ -218,7 +218,7 @@
       "level": "INTERMEDIATE LEVEL",
       "title": "AWS Certified Solutions Architect - Associate",
       "description": "Master AWS cloud architecture and prepare for the Solutions Architect certification exam.",
-      "price": "₹599",
+      "price": "₹5,399",
       "image": "https://images.unsplash.com/photo-1523474253046-8cd2748b5fd2?w=800&q=80",
       "tags": ["aws", "cloud computing", "certification"]
     },
@@ -227,7 +227,7 @@
       "level": "ADVANCED LEVEL",
       "title": "Multi-Cloud Architecture: AWS, Azure & GCP",
       "description": "Learn cloud computing across AWS, Azure, and Google Cloud Platform with hands-on projects.",
-      "price": "₹749",
+      "price": "₹5,399",
       "image": "https://images.unsplash.com/photo-1451187580459-43490279c0fa?w=800&q=80",
       "tags": ["cloud", "aws", "azure", "gcp"]
     },
@@ -236,7 +236,7 @@
       "level": "INTERMEDIATE LEVEL",
       "title": "Complete DevOps Engineer Bootcamp",
       "description": "Master CI/CD, Docker, Kubernetes, Jenkins, and automation tools for modern DevOps practices.",
-      "price": "₹699",
+      "price": "₹5,399",
       "image": "https://images.unsplash.com/photo-1618401471353-b98afee0b2eb?w=800&q=80",
       "tags": ["devops", "docker", "kubernetes", "cicd"]
     },
@@ -245,7 +245,7 @@
       "level": "ADVANCED LEVEL",
       "title": "Kubernetes & Docker - The Complete Guide",
       "description": "Learn containerization and orchestration with Docker and Kubernetes for scalable applications.",
-      "price": "₹649",
+      "price": "₹5,399",
       "image": "https://images.unsplash.com/photo-1605745341112-85968b19335b?w=800&q=80",
       "tags": ["kubernetes", "docker", "containers"]
     }
@@ -256,7 +256,7 @@
       "level": "BEGINNER LEVEL",
       "title": "Complete Cyber Security & Ethical Hacking Course",
       "description": "Learn cybersecurity fundamentals, penetration testing, and ethical hacking techniques.",
-      "price": "₹799",
+      "price": "₹5,399",
       "image": "https://images.unsplash.com/photo-1550751827-4bd374c3f58b?w=800&q=80",
       "tags": ["cyber security", "ethical hacking", "security"]
     },
@@ -265,7 +265,7 @@
       "level": "ADVANCED LEVEL",
       "title": "Advanced Penetration Testing & Network Security",
       "description": "Master advanced hacking techniques, vulnerability assessment, and enterprise security practices.",
-      "price": "₹749",
+      "price": "₹5,399",
       "image": "https://images.unsplash.com/photo-1563986768609-322da13575f3?w=800&q=80",
       "tags": ["penetration testing", "network security", "hacking"]
     },
@@ -274,7 +274,7 @@
       "level": "BEGINNER LEVEL",
       "title": "Computer Networks Fundamentals",
       "description": "Learn networking basics, TCP/IP, routing, switching, and network protocols from ground up.",
-      "price": "₹449",
+      "price": "₹5,399",
       "image": "https://images.unsplash.com/photo-1558494949-ef010cbdcc31?w=800&q=80",
       "tags": ["networking", "computer networks", "tcp ip"]
     },
@@ -283,7 +283,7 @@
       "level": "INTERMEDIATE LEVEL",
       "title": "CCNA Complete Course - Cisco Certified",
       "description": "Prepare for CCNA certification and master Cisco networking technologies and configurations.",
-      "price": "₹599",
+      "price": "₹5,399",
       "image": "https://images.unsplash.com/photo-1544197150-b99a580bb7a8?w=800&q=80",
       "tags": ["ccna", "cisco", "networking", "certification"]
     },
@@ -292,7 +292,7 @@
       "level": "BEGINNER LEVEL",
       "title": "Linux Administration for Beginners",
       "description": "Master Linux command line, system administration, and server management from scratch.",
-      "price": "₹449",
+      "price": "₹5,399",
       "image": "https://images.unsplash.com/photo-1629654297299-c8506221ca97?w=800&q=80",
       "tags": ["linux", "system administration", "command line"]
     },
@@ -301,7 +301,7 @@
       "level": "ADVANCED LEVEL",
       "title": "Advanced Linux System Administration & DevOps",
       "description": "Learn advanced Linux administration, shell scripting, and automation for DevOps workflows.",
-      "price": "₹599",
+      "price": "₹5,399",
       "image": "https://images.unsplash.com/photo-1640552435388-a54879e72b28?w=800&q=80",
       "tags": ["linux", "advanced", "shell scripting", "devops"]
     }
@@ -312,7 +312,7 @@
       "level": "BEGINNER LEVEL",
       "title": "Complete UI/UX Design Bootcamp",
       "description": "Learn user interface and experience design principles, wireframing, prototyping, and user research.",
-      "price": "₹599",
+      "price": "₹5,399",
       "image": "https://images.unsplash.com/photo-1561070791-2526d30994b5?w=800&q=80",
       "tags": ["ui ux", "design", "user experience"]
     },
@@ -321,7 +321,7 @@
       "level": "INTERMEDIATE LEVEL",
       "title": "Figma & Adobe XD - Complete Design Course",
       "description": "Master modern design tools and create stunning user interfaces and experiences.",
-      "price": "₹649",
+      "price": "₹5,399",
       "image": "https://images.unsplash.com/photo-1609921212029-bb5a28e60960?w=800&q=80",
       "tags": ["figma", "adobe xd", "ui design"]
     },
@@ -330,7 +330,7 @@
       "level": "BEGINNER LEVEL",
       "title": "Graphic Design Masterclass with Adobe Creative Suite",
       "description": "Learn Photoshop, Illustrator, and InDesign to create professional graphic designs.",
-      "price": "₹549",
+      "price": "₹5,399",
       "image": "https://images.unsplash.com/photo-1626785774573-4b799315345d?w=800&q=80",
       "tags": ["graphic design", "photoshop", "illustrator"]
     }
@@ -341,7 +341,7 @@
       "level": "BEGINNER LEVEL",
       "title": "DSA with Java: Master Data Structures & Algorithms",
       "description": "Learn core data structures and algorithms using Java with hands-on coding exercises and problem-solving.",
-      "price": "₹599",
+      "price": "₹5,399",
       "image": "https://images.pexels.com/photos/574071/pexels-photo-574071.jpeg?auto=compress&cs=tinysrgb&w=800",
       "tags": ["DSA", "Java", "algorithms", "data structures"]
     },
@@ -350,7 +350,7 @@
       "level": "BEGINNER LEVEL",
       "title": "DSA with C: Foundations of Algorithms",
       "description": "Understand data structures and algorithms from scratch using C, and improve your coding and problem-solving skills.",
-      "price": "₹599",
+      "price": "₹5,399",
       "image": "https://images.pexels.com/photos/1181671/pexels-photo-1181671.jpeg?auto=compress&cs=tinysrgb&w=800",
       "tags": ["DSA", "C", "algorithms", "data structures"]
     },
@@ -359,7 +359,7 @@
       "level": "BEGINNER LEVEL",
       "title": "DSA with C++: Problem Solving & Coding Skills",
       "description": "Master essential data structures and algorithms using C++ with practical coding challenges and examples.",
-      "price": "₹599",
+      "price": "₹5,399",
       "image": "https://images.pexels.com/photos/574071/pexels-photo-574071.jpeg?auto=compress&cs=tinysrgb&w=800",
       "tags": ["DSA", "C++", "algorithms", "data structures"]
     },
@@ -368,7 +368,7 @@
       "level": "BEGINNER LEVEL",
       "title": "DSA with Python: Coding & Algorithm Mastery",
       "description": "Learn data structures and algorithms in Python with hands-on exercises and coding challenges for real-world problem solving.",
-      "price": "₹599",
+      "price": "₹5,399",
       "image": "https://images.pexels.com/photos/1181671/pexels-photo-1181671.jpeg?auto=compress&cs=tinysrgb&w=800",
       "tags": ["DSA", "Python", "algorithms", "data structures"]
     }

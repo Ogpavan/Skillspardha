@@ -469,16 +469,7 @@ export default function Footer() {
                   <Linkedin size={16} /> Linkedin
                 </a>
               </li>
-              <li>
-                <a
-                  href="https://twitter.com/"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="inline-flex items-center gap-2 text-sm hover:text-white transition-colors"
-                >
-                  <Twitter size={16} /> X
-                </a>
-              </li>
+             
             </ul>
           </div>
         </div>
