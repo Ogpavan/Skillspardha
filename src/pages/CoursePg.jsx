@@ -266,7 +266,7 @@ export default function CoursePg() {
                 ) : filteredCourses.length === 0 ? (
                   <div className="text-center py-16">
                     <p className="text-xl text-gray-500">
-                      No courses found matching "{searchQuery}"
+                      No courses found matching  "{searchQuery}"
                     </p>
                     <button
                       onClick={() => setSearchQuery("")}
