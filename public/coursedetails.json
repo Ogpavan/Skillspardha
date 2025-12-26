@@ -1,198 +1,76 @@
-{
-  "Complete C Programming Bootcamp": {
-    "category": "Programming",
-    "title": "Complete C Programming Bootcamp",
+[
+  {
+    "id": "c-programming",
+    "t": "Complete C Programming Bootcamp",
+    "st": "Foundation of Modern Software Development",
+    "d": "C Programming is the foundation of modern software development. This 3-month industry-oriented course is designed to help students master core programming concepts, logic building, and real-worldproblem solving using the C language. Perfect for students aiming for careers in software development,embedded systems, cybersecurity, and competitive programming.",
     "image": "https://images.unsplash.com/photo-1517694712202-14dd9538aa97?w=800&q=80",
-    "duration": "6 WEEKS",
-    "level": "BEGINNER LEVEL",
-    "price": "₹399",
-    "description": "Master C programming fundamentals including pointers, memory management, and data structures from scratch.",
-    "syllabus": [
-      "Introduction to C",
-      "Variables and Data Types",
-      "Control Structures",
-      "Functions and Recursion",
-      "Pointers and Memory Management",
-      "Structures and Unions",
-      "File Handling",
-      "Data Structures in C",
-      "Project Work"
+    "meta": ["3 Months", "Beginner–Intermediate", "Concept + Practical", "/images/c-programming.jpg"],
+    "sch": ["3 Months (12 Weeks)", "3 Days/Week", "1 Hour/Day", "Concept + Practical"],
+    "hl": [
+      "Core programming fundamentalsfrom scratch.",
+      "Logic building & problem-solving skills.",
+      "Memory management & pointers.",
+      "File handling & real-world applications.",
+      "Writing efficient, optimized C programs."
     ],
-    "instructor": {
-      "name": "Dr. A. Sharma",
-      "bio": "PhD in Computer Science, 10+ years teaching C/C++",
-      "avatar": "https://randomuser.me/api/portraits/men/32.jpg"
-    }
-  },
-  "Advanced C Programming & System Programming": {
-    "category": "Programming",
-    "title": "Advanced C Programming & System Programming",
-    "image": "https://images.unsplash.com/photo-1555066931-4365d14bab8c?w=800&q=80",
-    "duration": "8 WEEKS",
-    "level": "INTERMEDIATE LEVEL",
-    "price": "₹499",
-    "description": "Learn advanced C concepts, system-level programming, and build robust applications with professional techniques.",
-    "syllabus": [
-      "Advanced Pointers and Memory Management",
-      "Dynamic Data Structures",
-      "System Calls and File I/O",
-      "Process Management",
-      "Inter-Process Communication",
-      "Multithreading in C",
-      "Error Handling and Debugging",
-      "Building System Utilities",
-      "Capstone Project"
+    "cur": [
+      [1, "Introduction & Basics", ["History & features of C, Structure of a C program, Compilation process, Keywords, identifiers,variables, and First C programs."]],
+      [2, "Data Types & Operators", ["Data types & type modifiers, Constants & type casting, Operators & expressions, and Operator precedence."]],
+      [3, "I/O & Control", ["printf() /scanf(), Escape sequences, Conditionalstatements(if,switch), and Loops(for, while, do-while)."]],
+      [4, "Functions & Recursion", ["Function declaration & calling, Call by value, Recursion, and Scope & lifetime of variables."]],
+      [5, "Arrays", ["1D & 2D arrays,Array operations, and Passing arraysto functions."]],
+      [6, "Strings", ["String declaration & handling, String functions, andArray ofstrings."]],
+      [7, "Pointers", ["Pointer basics, Pointers with arrays & functions, Pointer arithmetic, and Dynamic memory allocation."]],
+      [8, "Structures & Unions", ["Structures & unions,Array ofstructures, Nested structures, and typedef."]],
+      [9, "File Handling", ["File modes, File operations, Reading & writing files, and Command line arguments."]],
+      [10, "Preprocessor & Storage", ["Macros, Conditional compilation, Storage classes, and Enumerations Practice"]],
+      [11, "Debugging & Optimization", ["Types of errors, Debugging techniques, Code optimization, and Memory management best practices."]],
+      [12, "Final Project & Review", ["Mini project", "Revision", "Interview questions"]]
     ],
-    "instructor": {
-      "name": "Prof. S. Mehta",
-      "bio": "Systems Programmer, 8+ years in embedded and OS development",
-      "avatar": "https://randomuser.me/api/portraits/men/45.jpg"
-    }
+    "proj": [
+      "Student Management System",
+      "Library Management System",
+      "Banking System / Inventory Management System"
+    ],
+    "cert": "Certificate of Completion",
+    "price": ["₹8,999", "₹5,399", "One-time"]
   },
-  "C++ Programming from Beginner to Advanced": {
-    "category": "Programming",
-    "title": "C++ Programming from Beginner to Advanced",
+  {
+    "id": "cpp-programming",
+    "t": "Complete C++ Programming Bootcamp",
+    "st": "High-Performance & Object-Oriented Programming",
+    "d": "C++ is a powerful, high-performance programming language widely used in software development, game development, system programming, and competitive coding. This industry-focused C++ course is designed to take learners from zero programming knowledge to building real-world applications, while developing strong logic, problem-solving, and object-oriented programming skills.",
     "image": "https://images.unsplash.com/photo-1515879218367-8466d910aaa4?w=800&q=80",
-    "duration": "10 WEEKS",
-    "level": "BEGINNER LEVEL",
-    "price": "₹549",
-    "description": "Learn C++ programming from basics to advanced OOP concepts, STL, and modern C++ features.",
-    "syllabus": [
-      "C++ Basics and Syntax",
-      "Functions and Arrays",
-      "Object-Oriented Programming",
-      "Inheritance and Polymorphism",
-      "Templates and STL",
-      "Exception Handling",
-      "File I/O in C++",
-      "Modern C++ Features",
-      "Project Work"
+    "meta": ["3 Months", "Beginner–Intermediate", "Concept + Practical", "/images/cpp-programming.jpg"],
+    "sch": ["3 Months (12 Weeks)", "3 Days/Week", "1 Hour/Day", "Concept + Practical"],
+    "hl": [
+      "C++ programming from fundamentals to advanced concepts",
+      "Strong Object-Oriented Programming (OOP) skills",
+      "Memory management & pointers",
+      "STL for fast and efficient coding",
+      "Writing optimized, high-performance applications"
     ],
-    "instructor": {
-      "name": "Ms. R. Kaur",
-      "bio": "C++ Developer, 7+ years in software engineering",
-      "avatar": "https://randomuser.me/api/portraits/women/44.jpg"
-    }
-  },
-  "Modern C++ Design Patterns & Best Practices": {
-    "category": "Programming",
-    "title": "Modern C++ Design Patterns & Best Practices",
-    "image": "https://images.unsplash.com/photo-1542831371-29b0f74f9713?w=800&q=80",
-    "duration": "12 WEEKS",
-    "level": "ADVANCED LEVEL",
-    "price": "₹649",
-    "description": "Master advanced C++ concepts including templates, design patterns, and performance optimization.",
-    "syllabus": [
-      "Advanced Templates",
-      "Design Patterns in C++",
-      "Memory Management Best Practices",
-      "Performance Optimization",
-      "Multithreading and Concurrency",
-      "Testing and Debugging",
-      "Modern C++ Idioms",
-      "Case Studies",
-      "Capstone Project"
+    "cur": [
+      [1, "Introduction to C++", ["History & features of C++, C vs C++, Structure of a C++ program, Compilation process, Keywords, identifiers & tokens, and Basic programs."]],
+      [2, "Data Types, Operators & I/O", ["Data types & variables, Constants & type modifiers, Operators & precedence, and cin, cout & manipulators."]],
+      [3, "Control Flow Statements", ["Conditional statements (if, switch), Looping statements (for, while, do-while), and Jump statements."]],
+      [4, "Functions", ["Function declaration & definition, Call by value & reference, Inline functions, Default arguments, Function overloading, and Recursion."]],
+      [5, "Arrays, Strings & Pointers", ["1D & 2D arrays, Character arrays & string class, Pointer basics, and Pointers with arrays & functions."]],
+      [6, "Dynamic Memory Management", ["new & delete, Dynamic arrays, and Memory management best practices."]],
+      [7, "Object-Oriented Programming", ["Classes & objects, Constructors & destructors, Access specifiers, this pointer, and Static members."]],
+      [8, "Inheritance & Polymorphism", ["Types of inheritance, Function overriding, Virtual functions, and Runtime polymorphism."]],
+      [9, "Abstraction, Encapsulation & Templates", ["Abstract classes, Pure virtual functions, and Function & class templates."]],
+      [10, "STL (Standard Template Library)", ["Containers (vector, list, map, set), Iterators, and Algorithms."]],
+      [11, "Exception Handling & File Handling", ["try, catch, throw, User-defined exceptions, File streams, and Text & binary file operations."]],
+      [12, "Final Project & Review", ["Mini project", "Revision", "Interview & competitive programming basics"]]
     ],
-    "instructor": {
-      "name": "Dr. V. Rao",
-      "bio": "Senior C++ Architect, 12+ years in high-performance systems",
-      "avatar": "https://randomuser.me/api/portraits/men/55.jpg"
-    }
-  },
-  "Complete Java Programming Masterclass": {
-    "category": "Programming",
-    "title": "Complete Java Programming Masterclass",
-    "image": "https://images.unsplash.com/photo-1517694712202-14dd9538aa97?w=800&q=80",
-    "duration": "12 WEEKS",
-    "level": "BEGINNER LEVEL",
-    "price": "₹599",
-    "description": "Learn Java from scratch including OOP, collections, multithreading, and build real-world applications.",
-    "syllabus": [
-      "Java Basics and Syntax",
-      "OOP in Java",
-      "Collections Framework",
-      "Exception Handling",
-      "Multithreading",
-      "File I/O and Serialization",
-      "GUI Development",
-      "Java Project Work"
+    "proj": [
+      "Student Management System",
+      "Library Management System",
+      "Banking Application"
     ],
-    "instructor": {
-      "name": "Mr. P. Singh",
-      "bio": "Java Trainer, 9+ years in enterprise Java development",
-      "avatar": "https://randomuser.me/api/portraits/men/60.jpg"
-    }
-  },
-  "Spring Boot & Microservices with Java": {
-    "category": "Programming",
-    "title": "Spring Boot & Microservices with Java",
-    "image": "https://images.unsplash.com/photo-1555099962-4199c345e5dd?w=800&q=80",
-    "duration": "10 WEEKS",
-    "level": "INTERMEDIATE LEVEL",
-    "price": "₹699",
-    "description": "Build enterprise-level applications using Spring Boot framework and microservices architecture.",
-    "syllabus": [
-      "Spring Boot Fundamentals",
-      "RESTful APIs",
-      "Microservices Architecture",
-      "Spring Data JPA",
-      "Security and Authentication",
-      "Testing Spring Apps",
-      "Deployment and Monitoring",
-      "Project Work"
-    ],
-    "instructor": {
-      "name": "Ms. T. Nair",
-      "bio": "Spring Boot Specialist, 6+ years in backend systems",
-      "avatar": "https://randomuser.me/api/portraits/women/65.jpg"
-    }
-  },
-  "Complete Python Bootcamp: Go from zero to hero": {
-    "category": "Programming",
-    "title": "Complete Python Bootcamp: Go from zero to hero",
-    "image": "https://images.unsplash.com/photo-1526379095098-d400fd0bf935?w=800&q=80",
-    "duration": "8 WEEKS",
-    "level": "BEGINNER LEVEL",
-    "price": "₹499",
-    "description": "Master Python programming from basics to advanced topics with hands-on projects and real-world applications.",
-    "syllabus": [
-      "Python Basics and Syntax",
-      "Data Structures in Python",
-      "Functions and Modules",
-      "Object-Oriented Programming",
-      "File Handling",
-      "Error Handling",
-      "Libraries and Frameworks",
-      "Python Project Work"
-    ],
-    "instructor": {
-      "name": "Dr. S. Gupta",
-      "bio": "Python Developer, 8+ years in data science and automation",
-      "avatar": "https://randomuser.me/api/portraits/men/70.jpg"
-    }
-  },
-  "Python Django - The Practical Guide": {
-    "category": "Programming",
-    "title": "Python Django - The Practical Guide",
-    "image": "https://images.unsplash.com/photo-1555099962-4199c345e5dd?w=800&q=80",
-    "duration": "12 WEEKS",
-    "level": "ADVANCED LEVEL",
-    "price": "₹599",
-    "description": "Build professional web applications with Django framework and master full-stack development.",
-    "syllabus": [
-      "Django Basics",
-      "Models and ORM",
-      "Views and Templates",
-      "Forms and Validation",
-      "Authentication and Authorization",
-      "REST APIs with Django",
-      "Deployment and Scaling",
-      "Django Project Work"
-    ],
-    "instructor": {
-      "name": "Ms. L. Fernandes",
-      "bio": "Full Stack Developer, 7+ years in Django and web apps",
-      "avatar": "https://randomuser.me/api/portraits/women/71.jpg"
-    }
+    "cert": "Certificate of Completion",
+    "price": ["₹8,999", "₹5,399", "One-time"]
   }
-}
+]
