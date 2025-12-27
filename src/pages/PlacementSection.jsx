@@ -1,4 +1,9 @@
 import React, { useState, useEffect } from 'react';
+import Tarun from '../assets/TarunRathi.jpeg';
+import Ujjwal from '../assets/UjjwalSingh.jpeg';
+import Yash from '../assets/YashSangwan.jpeg';
+import Ibtisham from '../assets/IbtishamHasan.jpeg';
+import Vani from '../assets/VaniGupta.jpg';
 
 export default function TestimonialsSection() {
   const [currentIndex, setCurrentIndex] = useState(0);
@@ -8,36 +13,36 @@ export default function TestimonialsSection() {
       id: 1,
       title: "Full mastery program!",
       text: "Professional, responsive, and easy to work with. They understood our needs perfectly.The final product exceeded expectations.well good.",
-      image: "https://images.unsplash.com/photo-1494790108377-be9c29b29330?w=200&q=80",
-      name: "James Anderson"
+      image: Tarun,
+      name: "Tarun Rathi"
     },
     {
       id: 2,
       title: "Ultimate learning journey!",
       text: "From start to finish, everything was perfect. Great attention to detail, pixel-perfect layouts, and a strong sense of user experience.",
-      image: "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=200&q=80",
-      name: "Charlotte Williams"
+      image: Ujjwal,
+      name: "Ujjwal Singh"
     },
     {
       id: 3,
       title: "From basics to mastery!",
       text: "We're over the moon with our new website. It looks sharp, functions brilliantly, and has already drawn great feedback.",
-      image: "https://images.unsplash.com/photo-1500648767791-00dcc994a43e?w=200&q=80",
-      name: "Oliver Smith"
+      image: Yash,
+      name: "Yash Sangwan"
     },
     {
       id: 4,
       title: "Exceptional experience!",
       text: "The team delivered beyond our expectations. Every detail was carefully crafted, and the final result speaks for itself.",
-      image: "https://images.unsplash.com/photo-1534528741775-53994a69daeb?w=200&q=80",
-      name: "Emma Johnson"
+      image: Ibtisham,
+      name: "Ibtisham Hasan"
     },
     {
       id: 5,
       title: "Game-changing results!",
       text: "Working with them transformed our business. The quality and professionalism were outstanding from day one.",
-      image: "https://images.unsplash.com/photo-1599566150163-29194dcaad36?w=200&q=80",
-      name: "Michael Brown"
+      image: Vani,
+      name: "Vani Gupta"
     }
   ];
 

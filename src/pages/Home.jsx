@@ -31,7 +31,7 @@ const Home = () => {
       <Navbar />
       <div className="min-h-screen bg-black text-white overflow-x-hidden">
         {/* Hero Section */}
-        <section className="relative flex items-center min-h-[80vh] sm:min-h-[90vh] overflow-hidden">
+        <section className="items-center min-h-[80vh] sm:min-h-[90vh] overflow-hidden">
           {/* BG Video */}
           <video
             autoPlay
@@ -55,19 +55,27 @@ const Home = () => {
           <div className="absolute bottom-1/4 right-1/4 w-72 h-72 md:w-96 md:h-96 bg-purple-500/10 rounded-full blur-3xl" />
 
           {/* Content */}
-          <div className="relative z-10 w-full flex flex-col md:flex-row items-center justify-center px-6 md:px-12 lg:px-20 py-12 md:py-24">
+          <div className="relative z-10 w-full flex justify-center px-6 md:px-12 lg:px-20 pt-[50vh] pb-16">
+
+
             <motion.div
               className="w-full md:w-1/2 max-w-3xl md:max-w-xl text-left space-y-6 md:pr-12"
               initial="hidden"
               animate="visible"
               variants={fadeUp}
             >
-              <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold leading-tight">
-                Making Learning <br />
-                <span className="text-transparent bg-clip-text bg-linear-to-r from-orange-400 to-orange-600">
-                  Limitless
-                </span>
-              </h1>
+             <motion.h1
+  variants={fadeUp}
+  className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold leading-tight"
+>
+  <span className="block whitespace-nowrap">
+    Making Learning
+  </span>
+  <span className="block text-transparent bg-clip-text bg-linear-to-r from-orange-400 to-orange-600">
+    Limitless
+  </span>
+</motion.h1>
+
               <p className="text-base sm:text-lg md:text-xl text-gray-300 max-w-2xl leading-relaxed">
                 Learn with clarity, not clutter. No shortcuts. No noise. Just
                 intentional progress — one skill at a time.
