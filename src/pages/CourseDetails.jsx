@@ -1,7 +1,20 @@
-import React, { useState, useEffect } from 'react';
-import { ArrowLeft, Clock, BookOpen, Globe, BarChart3, Download, Award, ChevronDown } from 'lucide-react';
+import React, { useState, useEffect } from "react";
+import { useParams } from "react-router-dom";
+import {
+  ArrowLeft,
+  Clock,
+  BookOpen,
+  Globe,
+  BarChart3,
+  Download,
+  Award,
+  ChevronDown,
+} from "lucide-react";
+
 
 const CourseDetailPage = () => {
+  const { id } = useParams();
+
   const [courseData, setCourseData] = useState(null);
   const [loading, setLoading] = useState(true);
   const [openSections, setOpenSections] = useState({});
@@ -11,39 +24,35 @@ const CourseDetailPage = () => {
 
   useEffect(() => {
     fetchCourseData();
-  }, []);
+  }, [id]);
 
   const fetchCourseData = async () => {
+    setLoading(true);
+    setError("");
+
     try {
-      const response = await fetch('/coursedetails.json');
-      if (!response.ok) {
-        throw new Error('File not found');
-      }
-      let data = await response.json();
-      
-      if (!Array.isArray(data)) {
-        data = [data];
-      }
-      
-      // For demo purposes, use the first course
-      const course = data[0];
-      
-      if (!course) {
-        throw new Error('Course not found');
-      }
-      
+      const response = await fetch("/coursedetails.json");
+      if (!response.ok) throw new Error("Course data file not found");
+
+      const data = await response.json();
+      if (!Array.isArray(data)) throw new Error("Invalid course data format");
+
+      const course = data.find((c) => c.id === id);
+      if (!course) throw new Error("Course not found");
+
       setCourseData(course);
-      setLoading(false);
-    } catch (error) {
-      console.error('Error fetching course data:', error);
+    } catch (err) {
+      setError(err.message);
+      setCourseData(null);
+    } finally {
       setLoading(false);
     }
   };
 
   const toggleSection = (index) => {
-    setOpenSections(prev => ({
+    setOpenSections((prev) => ({
       ...prev,
-      [index]: !prev[index]
+      [index]: !prev[index],
     }));
   };
 
@@ -53,22 +62,31 @@ const CourseDetailPage = () => {
   const handleSubmit = (e) => {
     e.preventDefault();
     setError("");
+    setSuccess("");
+
     if (!form.name || !form.email || !form.phone) {
       setError("All fields are required.");
       return;
     }
-    setSuccess("Redirecting to secure payment...");
+
+    if (!courseData?.price?.[1]) {
+      setError("Invalid course price.");
+      return;
+    }
+
+    const amount =
+      Number(courseData.price[1].replace(/[^0-9]/g, "")) * 100;
 
     const options = {
       key: "rzp_test_xxxxxxxxxxxxx",
-      amount: Number(courseData.price[1].replace(/[^0-9]/g, "")) * 100,
+      amount,
       currency: "INR",
       name: courseData.t,
       description: courseData.st,
-      image: courseData.image || courseData.meta[3],
-      handler: function (response) {
+      image: courseData.image || courseData.meta?.[3],
+      handler: (response) => {
         setSuccess(
-          "Payment successful! Payment ID: " + response.razorpay_payment_id
+          `Payment successful! Payment ID: ${response.razorpay_payment_id}`
         );
       },
       prefill: {
@@ -76,19 +94,27 @@ const CourseDetailPage = () => {
         email: form.email,
         contact: form.phone,
       },
-      theme: {
-        color: "#F37254",
-      },
+      theme: { color: "#F37254" },
     };
 
     const rzp = new window.Razorpay(options);
     rzp.open();
   };
 
+  /* ---------- UI STATES ---------- */
+
   if (loading) {
     return (
       <div className="min-h-screen bg-gray-50 flex items-center justify-center">
         <div className="text-xl font-semibold">Loading...</div>
+      </div>
+    );
+  }
+
+  if (error) {
+    return (
+      <div className="min-h-screen bg-gray-50 flex items-center justify-center">
+        <div className="text-red-600 text-lg font-semibold">{error}</div>
       </div>
     );
   }
@@ -103,7 +129,6 @@ const CourseDetailPage = () => {
 
   return (
     <div className="min-h-screen bg-gray-50">
-      {/* Hero Section */}
       <div className="bg-gradient-to-br from-gray-100 to-gray-200 relative">
         <button
           onClick={() => window.history.back()}
@@ -113,45 +138,66 @@ const CourseDetailPage = () => {
         </button>
 
         <div className="max-w-7xl mx-auto px-6 pt-20 pb-8 relative z-10">
-          <h1 className="text-5xl font-bold text-center mb-4">{courseData.t}</h1>
-          <p className="text-center text-gray-700 max-w-2xl mx-auto mb-8">
-            {courseData.st}
-          </p>
+          <div className="flex items-center gap-8">
+            <div className="flex-1">
+              <h2 className="text-5xl font-bold mb-4">
+                {courseData.t}
+              </h2>
+              <p className="text-gray-700 mb-8">
+                {courseData.st}
+              </p>
+              
+              <div className="flex gap-6">
+                <div className="flex items-center gap-3">
+                  <Clock className="w-5 h-5 text-orange-500" />
+                  <span className="text-gray-700">{courseData.meta[0]}</span>
+                </div>
+                <div className="flex items-center gap-3">
+                  <BookOpen className="w-5 h-5 text-orange-500" />
+                  <span className="text-gray-700">{courseData.cur.length} Sections</span>
+                </div>
+              </div>
+            </div>
 
-          {/* Hero Image - Compact */}
-          <div className="max-w-5xl mx-auto rounded-2xl overflow-hidden shadow-lg">
-            <img
-              src={courseData.image || courseData.meta[3] || '/images/default-course.jpg'}
-              alt={courseData.t}
-              className="w-full h-80 object-cover"
-              onError={(e) => {
-                e.target.style.display = 'none';
-                e.target.parentElement.innerHTML = '<div class="w-full h-80 bg-gradient-to-r from-orange-400 via-purple-400 to-yellow-400 opacity-20"></div>';
-              }}
-            />
+            <div className="w-1/2 rounded-2xl overflow-hidden shadow-lg">
+              <img
+                src={
+                  courseData.image ||
+                  courseData.meta[3] ||
+                  "/images/default-course.jpg"
+                }
+                alt={courseData.t}
+                className="w-full h-80 object-cover"
+                onError={(e) => {
+                  e.target.style.display = 'none';
+                  e.target.parentElement.innerHTML = '<div class="w-full h-80 bg-gradient-to-r from-orange-400 via-purple-400 to-yellow-400 opacity-20"></div>';
+                }}
+              />
+            </div>
           </div>
         </div>
       </div>
 
-      {/* Main Content */}
       <div className="max-w-7xl mx-auto px-6 py-12">
         <div className="grid grid-cols-1 lg:grid-cols-3 gap-8">
-          {/* Left Column */}
           <div className="lg:col-span-2 space-y-8">
-            {/* About Section */}
             <div className="bg-white rounded-lg p-8 shadow-sm">
-              <h2 className="text-3xl font-bold mb-4">About the course</h2>
-              <p className="text-gray-700 leading-relaxed mb-6">
-                {courseData.d}
-              </p>
+              <h2 className="text-3xl font-bold mb-4">
+                About the course
+              </h2>
+              <p className="text-gray-700 leading-relaxed mb-6">{courseData.d}</p>
             </div>
 
-            {/* Highlights Section */}
             <div className="bg-white rounded-lg p-8 shadow-sm">
-              <h2 className="text-3xl font-bold mb-4">You will be able to know</h2>
+              <h2 className="text-3xl font-bold mb-4">
+                You will be able to know
+              </h2>
               <ul className="space-y-3">
                 {courseData.hl.map((item, index) => (
-                  <li key={index} className="flex items-start gap-3">
+                  <li
+                    key={index}
+                    className="flex items-start gap-3"
+                  >
                     <svg
                       className="w-5 h-5 text-orange-500 flex-shrink-0 mt-0.5"
                       fill="currentColor"
@@ -169,23 +215,31 @@ const CourseDetailPage = () => {
               </ul>
             </div>
 
-            {/* Curriculum Section */}
             <div className="bg-white rounded-lg p-8 shadow-sm">
-              <h2 className="text-3xl font-bold mb-2">Curriculum</h2>
+              <h2 className="text-3xl font-bold mb-2">
+                Curriculum
+              </h2>
               <p className="text-gray-600 mb-6">
                 {courseData.cur.length} Sections · {courseData.meta[0]}
               </p>
 
               <div className="space-y-3">
                 {courseData.cur.map((section, index) => (
-                  <div key={index} className="border border-gray-200 rounded-lg">
+                  <div
+                    key={index}
+                    className="border border-gray-200 rounded-lg"
+                  >
                     <button
                       onClick={() => toggleSection(index)}
                       className="w-full flex items-center justify-between p-5 hover:bg-gray-50 transition-colors"
                     >
                       <div className="flex items-center gap-3">
                         <ChevronDown
-                          className={`w-5 h-5 transition-transform ${openSections[index] ? 'rotate-180' : ''}`}
+                          className={`w-5 h-5 transition-transform ${
+                            openSections[index]
+                              ? "rotate-180"
+                              : ""
+                          }`}
                         />
                         <span className="font-semibold text-lg">{section[1]}</span>
                       </div>
@@ -193,7 +247,6 @@ const CourseDetailPage = () => {
                         {String(section[0]).padStart(2, '0')}
                       </span>
                     </button>
-
                     {openSections[index] && (
                       <div className="px-5 pb-5 border-t border-gray-200">
                         <ul className="mt-4 space-y-2">
@@ -210,7 +263,6 @@ const CourseDetailPage = () => {
               </div>
             </div>
 
-            {/* Projects Section */}
             {courseData.proj && (
               <div className="bg-white rounded-lg p-8 shadow-sm">
                 <h2 className="text-3xl font-bold mb-4">Projects</h2>
@@ -226,67 +278,61 @@ const CourseDetailPage = () => {
             )}
           </div>
 
-          {/* Right Column - Checkout Card */}
           <div className="lg:col-span-1">
             <div className="bg-white rounded-lg p-8 shadow-sm sticky top-6">
-              <h3 className="text-2xl font-bold mb-6">This course include</h3>
+              <h3 className="text-2xl font-bold mb-6">
+                This course include
+              </h3>
 
               <div className="space-y-4 mb-6">
                 <div className="flex items-center gap-3">
-                  <Clock className="w-5 h-5 text-gray-600" />
+                  <Clock className="w-5 h-5 text-orange-500" />
                   <span className="text-gray-700">{courseData.meta[0]}</span>
                 </div>
-
                 <div className="flex items-center gap-3">
-                  <BookOpen className="w-5 h-5 text-gray-600" />
+                  <BookOpen className="w-5 h-5 text-orange-500" />
                   <span className="text-gray-700">{courseData.cur.length} Sections</span>
                 </div>
-
                 <div className="flex items-center gap-3">
-                  <Globe className="w-5 h-5 text-gray-600" />
+                  <Globe className="w-5 h-5 text-orange-500" />
                   <span className="text-gray-700">Language: English</span>
                 </div>
-
                 <div className="flex items-center gap-3">
-                  <BarChart3 className="w-5 h-5 text-gray-600" />
+                  <BarChart3 className="w-5 h-5 text-orange-500" />
                   <span className="text-gray-700">Course Level: {courseData.meta[1]}</span>
                 </div>
-
                 <div className="flex items-center gap-3">
-                  <Download className="w-5 h-5 text-gray-600" />
+                  <Download className="w-5 h-5 text-orange-500" />
                   <span className="text-gray-700">Downloadable Files: 10</span>
                 </div>
-
                 <div className="flex items-center gap-3">
-                  <Award className="w-5 h-5 text-gray-600" />
+                  <Award className="w-5 h-5 text-orange-500" />
                   <span className="text-gray-700">{courseData.cert}</span>
                 </div>
               </div>
 
               <div className="border-t pt-6">
                 <div className="flex items-baseline gap-3 mb-6">
-                  <span className="text-4xl font-bold">{courseData.price[1]}</span>
-                  <span className="text-xl text-gray-400 line-through">{courseData.price[0]}</span>
+                  <span className="text-4xl font-bold">
+                    {courseData.price[1]}
+                  </span>
+                  <span className="text-xl text-gray-400 line-through">
+                    {courseData.price[0]}
+                  </span>
                 </div>
 
-                
-                
-
-                  <button
-                    onClick={handleSubmit}
-                    className="inline-flex items-center justify-center gap-1 px-6 py-2 text-sm font-medium uppercase tracking-wide bg-white text-black border-2 border-black cursor-pointer w-fit hover:text-black">
-                  
-                    Add to Cart →
-                  </button>
-                </div>
-
-               
+                <button
+                  onClick={handleSubmit}
+                  className="inline-flex items-center justify-center gap-1 px-6 py-2 text-sm font-medium uppercase tracking-wide bg-white text-black border-2 border-black cursor-pointer w-fit hover:text-black"
+                >
+                  Add to Cart →
+                </button>
               </div>
             </div>
           </div>
         </div>
       </div>
-    
+    </div>
   );
 };
 

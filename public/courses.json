@@ -1,6 +1,7 @@
 {
   "Programming": [
-    {
+    { 
+      "id": "c-programming",
       "duration": "6 WEEKS",
       "level": "BEGINNER LEVEL",
       "title": "Complete C Programming Bootcamp",
@@ -11,6 +12,7 @@
     },
    
     {
+      "id": "cpp-programming",
       "duration": "10 WEEKS",
       "level": "BEGINNER LEVEL",
       "title": "C++ Programming from Beginner to Advanced",

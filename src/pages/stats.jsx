@@ -8,16 +8,16 @@ import { Link } from "react-router-dom";
 export default function CombinedSections() {
 
   const MotionLink = motion(Link);
- 
+
 
   return (
     <div className="bg-gray-100 min-h-screen">
       {/* Hero Section */}
 
-       
+
       <section className="py-20 px-8 bg-gray-100">
         <div className="max-w-5xl mx-auto text-center">
-          <motion.h2 
+          <motion.h2
             initial={{ opacity: 0, y: 30 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8 }}
@@ -25,8 +25,8 @@ export default function CombinedSections() {
           >
             Explore a wide range of<br />courses all in one place.
           </motion.h2>
-          
-          <motion.p 
+
+          <motion.p
             initial={{ opacity: 0, y: 30 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8, delay: 0.2 }}
@@ -41,24 +41,24 @@ export default function CombinedSections() {
       <section className="py-16 px-8 bg-gray-100 relative overflow-hidden">
         {/* Floating Orbs Background */}
         <motion.div
-          animate={{ 
+          animate={{
             y: [0, -30, 0],
             opacity: [0.2, 0.4, 0.2]
           }}
-          transition={{ 
+          transition={{
             duration: 10,
             repeat: Infinity,
             ease: "easeInOut"
           }}
           className="absolute top-20 right-20 w-96 h-96 bg-blue-400/20 rounded-full blur-3xl"
         />
-        
+
         <motion.div
-          animate={{ 
+          animate={{
             y: [0, 40, 0],
             opacity: [0.15, 0.35, 0.15]
           }}
-          transition={{ 
+          transition={{
             duration: 12,
             repeat: Infinity,
             ease: "easeInOut",
@@ -70,7 +70,7 @@ export default function CombinedSections() {
         <div className="max-w-7xl mx-auto relative z-10">
           {/* Main Grid - 3 Columns */}
           <div className="grid grid-cols-1 md:grid-cols-3 gap-8 items-start">
-            
+
             {/* Left Column - 2 Cards Stacked */}
             <div className="flex flex-col gap-8 h-full">
               {/* Hours Videos Card */}
@@ -79,13 +79,13 @@ export default function CombinedSections() {
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
                 transition={{ duration: 0.6 }}
-                whileHover={{ 
+                whileHover={{
                   scale: 1.02,
                   boxShadow: "0 20px 40px rgba(0, 0, 0, 0.1)"
                 }}
                 className="bg-white rounded-3xl p-10 shadow-sm relative"
               >
-                <motion.div 
+                <motion.div
                   initial={{ scale: 0 }}
                   whileInView={{ scale: 1 }}
                   viewport={{ once: true }}
@@ -122,7 +122,7 @@ export default function CombinedSections() {
                 className="bg-white rounded-3xl p-10 shadow-sm flex items-center justify-center overflow-hidden flex-1"
               >
                 <div className="flex gap-6">
-                  <motion.div 
+                  <motion.div
                     initial={{ opacity: 0, rotate: 0 }}
                     whileInView={{ opacity: 1, rotate: 6 }}
                     viewport={{ once: true }}
@@ -132,7 +132,7 @@ export default function CombinedSections() {
                   >
                     <img src="https://images.unsplash.com/photo-1516321318423-f06f85e504b3?w=400&q=80" alt="Student" className="w-full h-full object-cover" />
                   </motion.div>
-                  <motion.div 
+                  <motion.div
                     initial={{ opacity: 0, rotate: 0 }}
                     whileInView={{ opacity: 1, rotate: -6 }}
                     viewport={{ once: true }}
@@ -152,16 +152,16 @@ export default function CombinedSections() {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ duration: 0.6, delay: 0.2 }}
-              whileHover={{ 
+              whileHover={{
                 scale: 1.02,
                 boxShadow: "0 20px 40px rgba(0, 0, 0, 0.1)"
               }}
               className="bg-white rounded-3xl overflow-hidden shadow-sm flex flex-col h-full"
             >
               <div className="w-full h-64 overflow-hidden">
-                <img 
-                  src="https://images.unsplash.com/photo-1522071820081-009f0129c71c?w=800&q=80" 
-                  alt="Community" 
+                <img
+                  src="https://images.unsplash.com/photo-1522071820081-009f0129c71c?w=800&q=80"
+                  alt="Community"
                   className="w-full h-full object-cover"
                 />
               </div>
@@ -171,22 +171,22 @@ export default function CombinedSections() {
                   We cherish the support of our diverse global community, fostering an inclusive
                   environment where everyone feels valued.
                 </p>
-               <MotionLink
-  to="/courses"
-  whileHover={{ 
-    scale: 1.05,
-    backgroundColor: "#e5e5e5"
-  }}
-  whileTap={{ scale: 0.95 }}
-  transition={{ duration: 0.2 }}
-  className="inline-flex items-center justify-center gap-1 px-6 py-2 text-sm font-medium uppercase tracking-wide bg-white text-black border-2 border-black cursor-pointer w-fit hover:text-black"
->
-  Explore
-  <ArrowRight
-    size={16}
-    className="transition-all duration-300 group-hover:translate-x-1"
-  />
-</MotionLink>
+                <MotionLink
+                  to="/courses"
+                  whileHover={{
+                    scale: 1.05,
+                    backgroundColor: "#e5e5e5"
+                  }}
+                  whileTap={{ scale: 0.95 }}
+                  transition={{ duration: 0.2 }}
+                  className="inline-flex items-center justify-center gap-1 px-6 py-2 text-sm font-medium uppercase tracking-wide bg-white text-black border-2 border-black cursor-pointer w-fit hover:text-black"
+                >
+                  Explore
+                  <ArrowRight
+                    size={16}
+                    className="transition-all duration-300 group-hover:translate-x-1"
+                  />
+                </MotionLink>
               </div>
             </motion.div>
 
@@ -198,7 +198,7 @@ export default function CombinedSections() {
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
                 transition={{ duration: 0.6, delay: 0.3 }}
-                whileHover={{ 
+                whileHover={{
                   scale: 1.02,
                   boxShadow: "0 20px 40px rgba(0, 0, 0, 0.1)"
                 }}
@@ -206,7 +206,7 @@ export default function CombinedSections() {
               >
                 <div className="absolute top-6 right-6 flex flex-col gap-3">
                   {/* Chat Bubbles with Staggered Animation */}
-                  <motion.div 
+                  <motion.div
                     initial={{ opacity: 0, x: -20 }}
                     whileInView={{ opacity: 1, x: 0 }}
                     viewport={{ once: true }}
@@ -220,8 +220,8 @@ export default function CombinedSections() {
                       <p className="text-sm text-gray-800">Hey, How are you?</p>
                     </div>
                   </motion.div>
-                  
-                  <motion.div 
+
+                  <motion.div
                     initial={{ opacity: 0, x: 20 }}
                     whileInView={{ opacity: 1, x: 0 }}
                     viewport={{ once: true }}
@@ -235,8 +235,8 @@ export default function CombinedSections() {
                       <p className="text-sm">Good</p>
                     </div>
                   </motion.div>
-                  
-                  <motion.div 
+
+                  <motion.div
                     initial={{ opacity: 0, x: -20 }}
                     whileInView={{ opacity: 1, x: 0 }}
                     viewport={{ once: true }}
@@ -251,7 +251,7 @@ export default function CombinedSections() {
                     </div>
                   </motion.div>
                 </div>
-                
+
                 {/* Avatar Row */}
                 <div className="flex gap-3 mt-36">
                   {[
@@ -259,7 +259,7 @@ export default function CombinedSections() {
                     "https://images.unsplash.com/photo-1500648767791-00dcc994a43e?w=100&q=80",
                     "https://images.unsplash.com/photo-1534528741775-53994a69daeb?w=100&q=80"
                   ].map((src, i) => (
-                    <motion.div 
+                    <motion.div
                       key={i}
                       initial={{ scale: 0 }}
                       whileInView={{ scale: 1 }}
@@ -272,8 +272,8 @@ export default function CombinedSections() {
                     </motion.div>
                   ))}
                 </div>
-                
-              
+
+
               </motion.div>
 
               {/* Happy Students Card */}
@@ -282,13 +282,13 @@ export default function CombinedSections() {
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
                 transition={{ duration: 0.6, delay: 0.4 }}
-                whileHover={{ 
+                whileHover={{
                   scale: 1.02,
                   boxShadow: "0 20px 40px rgba(0, 0, 0, 0.1)"
                 }}
                 className="bg-white rounded-3xl p-10 shadow-sm relative"
               >
-                <motion.div 
+                <motion.div
                   initial={{ scale: 0 }}
                   whileInView={{ scale: 1 }}
                   viewport={{ once: true }}
@@ -310,8 +310,8 @@ export default function CombinedSections() {
         </div>
       </section>
 
-      
-     
+
+
     </div>
   );
 }

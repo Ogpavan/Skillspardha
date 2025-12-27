@@ -100,16 +100,16 @@ export default function CoursePg() {
   const filteredCourses = !searchQuery?.trim()
     ? currentCourses
     : allCourses.filter((course) => {
-        const query = searchQuery.trim().toLowerCase();
+      const query = searchQuery.trim().toLowerCase();
 
-        const searchableText = `
+      const searchableText = `
         ${course?.title || ""}
         ${course?.description || ""}
         ${(course?.tags || []).join(" ")}
       `.toLowerCase();
 
-        return searchableText.includes(query);
-      });
+      return searchableText.includes(query);
+    });
 
   return (
     <>
@@ -132,17 +132,15 @@ export default function CoursePg() {
           <div
             className="absolute top-1/4 left-1/4 w-72 h-72 md:w-96 md:h-96 bg-blue-500/10 rounded-full blur-3xl"
             style={{
-              transform: `translate(${
-                glowParallax * 0.5
-              }px, ${glowParallax}px)`,
+              transform: `translate(${glowParallax * 0.5
+                }px, ${glowParallax}px)`,
             }}
           />
           <div
             className="absolute bottom-1/4 right-1/4 w-72 h-72 md:w-96 md:h-96 bg-purple-500/10 rounded-full blur-3xl"
             style={{
-              transform: `translate(-${
-                glowParallax * 0.5
-              }px, -${glowParallax}px)`,
+              transform: `translate(-${glowParallax * 0.5
+                }px, -${glowParallax}px)`,
             }}
           />
           <div className="relative z-10 w-full flex flex-col md:flex-row items-center justify-center px-6 md:px-12 lg:px-20 py-12 md:py-24">
@@ -218,11 +216,10 @@ export default function CoursePg() {
                           setActiveCategory(category);
                           setSearchQuery("");
                         }}
-                        className={`pb-2 text-sm font-semibold transition relative ${
-                          category === activeCategory
-                            ? "text-gray-900"
-                            : "text-gray-500 hover:text-gray-800"
-                        }`}
+                        className={`pb-2 text-sm font-semibold transition relative ${category === activeCategory
+                          ? "text-gray-900"
+                          : "text-gray-500 hover:text-gray-800"
+                          }`}
                       >
                         {category}
                         {category === activeCategory && (
@@ -245,11 +242,10 @@ export default function CoursePg() {
                           setActiveCategory(category);
                           setSearchQuery("");
                         }}
-                        className={`w-full text-left px-4 py-3 text-base font-medium transition-all ${
-                          category === activeCategory
-                            ? "text-gray-900 border-l-4 border-orange-400 bg-gray-50"
-                            : "text-gray-600 hover:text-gray-900 border-l-4 border-transparent hover:border-gray-300"
-                        }`}
+                        className={`w-full text-left px-4 py-3 text-base font-medium transition-all ${category === activeCategory
+                          ? "text-gray-900 border-l-4 border-orange-400 bg-gray-50"
+                          : "text-gray-600 hover:text-gray-900 border-l-4 border-transparent hover:border-gray-300"
+                          }`}
                       >
                         {category}
                       </button>
@@ -342,12 +338,12 @@ export default function CoursePg() {
                               <button
                                 className="group inline-flex items-center justify-center gap-2 px-3 sm:px-6 py-2 sm:py-2.5 text-xs sm:text-sm font-semibold uppercase tracking-wide bg-white text-black border-2 border-black cursor-pointer w-auto sm:w-fit hover:bg-gray-200 hover:text-black transition-all duration-300"
                                 onClick={() => {
-                                  const cat =
-                                    encodeURIComponent(activeCategory);
-                                  const title = encodeURIComponent(
-                                    course.title
+                                  // const cat = encodeURIComponent(activeCategory);
+                                  navigate(
+                                    `/courses/${encodeURIComponent(activeCategory)}/${course.id}`
                                   );
-                                  navigate(`/courses/${cat}/${title}`);
+
+
                                 }}
                               >
                                 <span className="hidden sm:inline whitespace-nowrap">
