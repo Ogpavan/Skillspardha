@@ -25,6 +25,7 @@
    
     
     {
+       "id": "python-programming",
       "duration": "8 WEEKS",
       "level": "BEGINNER LEVEL",
       "title": "Complete Python Bootcamp: Go from zero to hero",
@@ -32,6 +33,17 @@
       "price": "₹5,399",
       "image": "https://images.unsplash.com/photo-1526379095098-d400fd0bf935?w=800&q=80",
       "tags": ["python", "programming", "beginner"]
+    },
+
+     {
+       "id": "java-programming",
+      "duration": "12 WEEKS",
+      "level": "BEGINNER LEVEL",
+      "title": "Java Programming:Master Java for Interviews & Projects",
+      "description": "A complete Java course covering core concepts, object-oriented programming, and real-world application development from the ground up.",
+      "price": "₹5,399",
+      "image": "https://images.pexels.com/photos/1181298/pexels-photo-1181298.jpeg",
+      "tags": ["java", "programming", "beginner"]
     }
   ],
   "Development": [
@@ -44,15 +56,7 @@
       "image": "https://images.unsplash.com/photo-1498050108023-c5249f4df085?w=800&q=80",
       "tags": ["full stack", "web development", "mern"]
     },
-    {
-      "duration": "12 WEEKS",
-      "level": "INTERMEDIATE LEVEL",
-      "title": "MERN Stack Development Complete Guide",
-      "description": "Build full-stack applications using MongoDB, Express, React, and Node.js with real projects.",
-      "price": "₹5,399",
-      "image": "https://images.unsplash.com/photo-1593720213428-28a5b9e94613?w=800&q=80",
-      "tags": ["mern", "full stack", "react", "node"]
-    },
+    
     {
       "duration": "14 WEEKS",
       "level": "BEGINNER LEVEL",

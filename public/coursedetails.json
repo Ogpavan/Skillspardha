@@ -72,5 +72,89 @@
     ],
     "cert": "Certificate of Completion",
     "price": ["₹8,999", "₹5,399", "One-time"]
+  },
+
+   {
+    "id": "java-programming",
+    "t": "Java Programming:Master Java ",
+    "st": "High-Performance & Object-Oriented Programming",
+    "d": "Java is one of the most trusted and widely used programming languages in the world. This industryoriented Java course is designed to take learners from zero coding knowledge to building real-world applications, making them ready forJava Developer, Backend Developer, and Software Engineer roles.",
+    "image": "https://images.pexels.com/photos/1181298/pexels-photo-1181298.jpeg",
+    "meta": ["3 Months", "Beginner–Intermediate", "Concept + Practical", "/images/cpp-programming.jpg"],
+    "sch": ["3 Months (12 Weeks)", "3 Days/Week", "1 Hour/Day", "Concept + Practical"],
+    "hl": [
+      "Core Java programming from scratch",
+      "Strong Object-Oriented Programming (OOP) concepts",
+      "Collections, multithreading & file handling",
+      "Java 8 features(Lambdas & Streams)",
+      "Database connectivity using JDBC",
+      "Real-world project development"
+    ],
+    "cur": [
+      [1, "Java Introduction & Setup", ["History & features of Java, Java editions (SE, EE, ME), JDK, JRE, JVM architecture, Java program structure, Installing Java & IDE (IntelliJ/ Eclipse), and First Java program."]],
+      [2, "Data Types, Operators & Control Flow", ["Variables & data types, Type casting, Operators, Conditional statements (if, switch),and Looping statements(for, while, do-while)."]],
+
+      [3, "Methods & Arrays", ["Methods & method overloading, Passing parameters, 1D & 2D arrays, and Array of objects."]],
+      [4, "OOPConcepts – Part 1", ["Classes & objects, Constructors, this & static keywords, and Encapsulation"]],
+      [5, "OOPConcepts – Part 2", ["Inheritance, Polymorphism,Abstraction."]],
+      [6, "DStrings, Wrapper Classes & Packages", ["String, StringBuffer, StringBuilder, Wrapper classes, Autoboxing & unboxing, and Packages & access modifiers"]],
+      [7, "Exception Handling & File Handling", ["Checked & unchecked exceptions, try-catch-finally, throw, throws, File handling, and Serialization & deserialization."]],
+      [8, "Multithreading", ["Thread lifecycle, Creating threads, Synchronization, and Inter-thread communication."]],
+      [9, "Collections Framework", ["List (ArrayList, LinkedList), Set (HashSet, TreeSet), Map (HashMap, TreeMap), and Iterators"]],
+      [10, "Java 8 Features", ["Lambda expressions, Functional interfaces, Stream API, and Date & Time API."]],
+      [11, "JDBC – Database Connectivity", ["JDBC architecture, Connecting Java with MySQL, CRUD operations."]],
+      [12, "Final Project & Review", ["Student Management System",
+"Library Management System",
+"Employee Management System",
+"Revision of core concepts",
+"Java interview questions"]]
+    ],
+    "proj": [
+      "Student Management System",
+      "Library Management System",
+      "Employee Management System"
+    ],
+    "cert": "Certificate of Completion",
+    "price": ["₹8,999", "₹5,399", "One-time"]
+  },
+  
+   {
+    "id": "python-programming",
+    "t": "Complete Python Bootcamp: Go from zero to hero",
+    "st": "High-Performance & Object-Oriented Programming",
+    "d": "Python is one of the most powerful and in-demand programming languages in the world. This joboriented Python course is designed to take learners from zero programming knowledge to building realworld applications, making them ready for careers in Software Development, Data Science, AI, Automation, and Cyber Security.",
+    "image": "https://images.pexels.com/photos/1181298/pexels-photo-1181298.jpeg",
+    "meta": ["3 Months", "Beginner–Intermediate", "Concept + Practical", "/images/cpp-programming.jpg"],
+    "sch": ["3 Months (12 Weeks)", "3 Days/Week", "1 Hour/Day", "Concept + Practical"],
+    "hl": [
+      "Python programming from scratch",
+      "Strong logic building & problem-solving skills",
+      "Data handling using lists, dictionaries & files",
+      "Object-Oriented Programming (OOP) concepts",
+      "Database connectivity & real-world project development"
+    ],
+    "cur": [
+      [1, "Introduction to Python", ["What is Python & where it is used, Installing Python & IDEs (VS Code / PyCharm), Python syntax & indentation, Writing first Python program, and Comments & keywords."]],
+      [2, "Variables, Data Types & I/O", ["Variables & naming rules, Numeric,string & boolean data types, Type casting, and input() and print()."]],
+      [3, "Operators & Control Flow", ["Arithmetic, relational & logical operators, Conditional statements (if, elif, else),Loops (for, while), andbreak, continue, pass."]],
+      [4, "Strings & Lists", ["String indexing & slicing, String methods, List creation & operations, List comprehensions"]],
+      [5, "Tuples, Sets & Dictionaries", ["Tuple operations, Set methods & set operations, Dictionary keys, values & methods, and Nested data structures."]],
+      [6, "Functions & Lambda", ["Built-in & user-defined functions, Parameters & return values, Default & keyword arguments,Lambda functions, Recursion."]],
+      [7, "Modules, Packages & File Handling", ["Importing modules, Creating custom modules, File modes, Reading & writing text & CSV files"]],
+      [8, "Exception Handling", ["Types of errors, try-except-else-finally, and Custom exceptions"]],
+      [9, "Object-Oriented Programming", ["Classes & objects, Constructors (__init__), Instance & class variables, Inheritance, Polymorphism"]],
+      [10, "Advanced Python Concepts", ["Iterators & generators, Decorators, Regular expressions, Date & time handling, and JSON handling"]],
+      [11, " Database Connectivity", ["Introduction to databases, Python with MySQL / SQLite, CRUD operations"]],
+      [12, "Final Project & Review", ["Student Management System", "To-Do List Application", "File Organizer", "Mini Data-DrivenApp"]]
+    ],
+    
+    "proj": [
+      "Student Management System",
+      "To-Do List Application",
+      "File Organizer",
+      "Mini Data-DrivenApp"
+    ],
+    "cert": "Certificate of Completion",
+    "price": ["₹8,999", "₹5,399", "One-time"]
   }
 ]
