@@ -1,7 +1,9 @@
 import React, { useState, useEffect } from "react";
 import { Menu, X } from "lucide-react";
 import { useNavigate, useLocation } from "react-router-dom";
+import { motion, AnimatePresence } from "framer-motion";
 import Logo from "../assets/Logo.png";
+import SignupPopup from "./Signup";
 
 // Add "Home" as the first item
 const navItems = ["Home", "About", "Courses", "Contact"];
@@ -13,6 +15,7 @@ const PremiumNavbar = () => {
   const [hoveredItem, setHoveredItem] = useState(null);
   const [showNavbar, setShowNavbar] = useState(true);
   const [lastScrollY, setLastScrollY] = useState(0);
+  const [isSignupOpen, setIsSignupOpen] = useState(false);
   const navigate = useNavigate();
   const location = useLocation();
 
@@ -129,7 +132,10 @@ const PremiumNavbar = () => {
             </div>
 
             <div className="hidden lg:flex items-center space-x-3">
-              <button className="btn relative overflow-hidden group isolate">
+              <button
+                className="btn relative overflow-hidden group isolate"
+                onClick={() => setIsSignupOpen(true)}
+              >
                 <span className="relative z-10">Sign up</span>
                 <div
                   className="absolute inset-0 -z-10
@@ -174,7 +180,10 @@ const PremiumNavbar = () => {
               ))}
             </div>
             <div className="mt-8 space-y-3">
-              <button className="btn relative overflow-hidden group isolate w-full">
+              <button
+                className="btn relative overflow-hidden group isolate w-full"
+                onClick={() => setIsSignupOpen(true)}
+              >
                 <span className="relative z-10">Sign up</span>
                 <div
                   className="absolute inset-0 -z-10
@@ -189,6 +198,22 @@ const PremiumNavbar = () => {
           </div>
         </div>
       </nav>
+
+      {/* Signup Modal Popup with smooth animation */}
+      <AnimatePresence>
+        {isSignupOpen && (
+          <motion.div
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            exit={{ opacity: 0 }}
+            transition={{ duration: 0.3 }}
+            style={{ position: "fixed", inset: 0, zIndex: 100 }}
+          >
+            <SignupPopup open={isSignupOpen} onOpenChange={setIsSignupOpen} />
+          </motion.div>
+        )}
+      </AnimatePresence>
+
       <style>{`
         @keyframes gradient {
           0%, 100% { background-position: 0% 50%; }

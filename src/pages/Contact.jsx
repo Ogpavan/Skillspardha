@@ -1,21 +1,21 @@
-import React, { useState, useEffect, useRef } from 'react';
-import { ArrowRight } from 'lucide-react';
+import React, { useState, useEffect, useRef } from "react";
+import { ArrowRight } from "lucide-react";
 import { motion } from "framer-motion";
-import Navbar from '../components/Navbar';
-import Bg_contact from '../assets/bg_contact1.webp';
-import FAQ from './FAQ';
-import Footer from '../components/Footer';
+import Navbar from "../components/Navbar";
+import Bg_contact from "../assets/bg_contact1.webp";
+import FAQ from "./FAQ";
+import Footer from "../components/Footer";
 
 export default function CoursePg() {
   const [scrollY, setScrollY] = useState(0);
   const [isVisible, setIsVisible] = useState(false);
   const contentRef = useRef(null);
   const [formData, setFormData] = useState({
-    name: '',
-    email: '',
-    subject: '',
-    message: '',
-    saveInfo: false
+    name: "",
+    email: "",
+    subject: "",
+    message: "",
+    saveInfo: false,
   });
 
   useEffect(() => {
@@ -29,9 +29,9 @@ export default function CoursePg() {
       y: 0,
       transition: {
         duration: 2.5,
-        ease: [0.06, 0.9, 0.12, 0.99]
-      }
-    }
+        ease: [0.06, 0.9, 0.12, 0.99],
+      },
+    },
   };
 
   const float = {
@@ -41,9 +41,9 @@ export default function CoursePg() {
         duration: 12,
         repeat: Infinity,
         ease: "easeInOut",
-        repeatType: "reverse"
-      }
-    }
+        repeatType: "reverse",
+      },
+    },
   };
 
   useEffect(() => {
@@ -52,37 +52,38 @@ export default function CoursePg() {
 
       if (contentRef.current) {
         const rect = contentRef.current.getBoundingClientRect();
-        const isInView = rect.top < window.innerHeight * 0.75 && rect.bottom > 0;
+        const isInView =
+          rect.top < window.innerHeight * 0.75 && rect.bottom > 0;
         setIsVisible(isInView);
       }
     };
 
-    window.addEventListener('scroll', handleScroll);
+    window.addEventListener("scroll", handleScroll);
     handleScroll();
-    return () => window.removeEventListener('scroll', handleScroll);
+    return () => window.removeEventListener("scroll", handleScroll);
   }, []);
 
   const handleChange = (e) => {
     const { name, value, type, checked } = e.target;
-    setFormData(prev => ({
+    setFormData((prev) => ({
       ...prev,
-      [name]: type === 'checkbox' ? checked : value
+      [name]: type === "checkbox" ? checked : value,
     }));
   };
 
   const handleSubmit = () => {
     if (!formData.name || !formData.email || !formData.message) {
-      alert('Please fill in all required fields');
+      alert("Please fill in all required fields");
       return;
     }
-    console.log('Form submitted:', formData);
-    alert('Message sent successfully!');
+    console.log("Form submitted:", formData);
+    alert("Message sent successfully!");
     setFormData({
-      name: '',
-      email: '',
-      subject: '',
-      message: '',
-      saveInfo: false
+      name: "",
+      email: "",
+      subject: "",
+      message: "",
+      saveInfo: false,
     });
   };
 
@@ -95,7 +96,7 @@ export default function CoursePg() {
       <Navbar />
       <div className="min-h-screen bg-gray-100">
         {/* Hero Section with Background Image */}
-        <section className="relative min-h-screen flex items-end pb-20 overflow-hidden">
+        <section className="relative flex items-center min-h-[80vh] sm:min-h-[90vh] overflow-hidden">
           {/* BG Image with Parallax */}
           <img
             src={Bg_contact}
@@ -105,61 +106,64 @@ export default function CoursePg() {
               transform: `translateY(${bgParallax}px)`,
             }}
           />
-
-          {/* Dark Layer */}
+          {/* Overlay */}
           <div className="absolute inset-0 bg-black/60" />
-
           {/* Noise Overlay */}
           <div className="absolute inset-0 opacity-[0.015] pointer-events-none bg-[url('data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIzMDAiIGhlaWdodD0iMzAwIj48ZmlsdGVyIGlkPSJhIj48ZmVUdXJidWxlbmNlIGJhc2VGcmVxdWVuY3k9Ii43NSIgc3RpdGNoVGlsZXM9InN0aXRjaCIgdHlwZT0iZnJhY3RhbE5vaXNlIi8+PGZlQ29sb3JNYXRyaXggdHlwZT0ic2F0dXJhdGUiIHZhbHVlcz0iMCIvPjwvZmlsdGVyPjxyZWN0IHdpZHRoPSIxMDAlIiBoZWlnaHQ9IjEwMCUiIGZpbHRlcj0idXJsKCNhKSIvPjwvc3ZnPg==')]" />
-
-          {/* Glow Effects with Parallax */}
+          {/* Glow Effects */}
           <div
-            className="absolute top-1/4 left-1/4 w-96 h-96 bg-blue-500/10 rounded-full blur-3xl"
+            className="absolute top-1/4 left-1/4 w-72 h-72 md:w-96 md:h-96 bg-blue-500/10 rounded-full blur-3xl"
             style={{
-              transform: `translate(${glowParallax * 0.5}px, ${glowParallax}px)`,
+              transform: `translate(${
+                glowParallax * 0.5
+              }px, ${glowParallax}px)`,
             }}
           />
           <div
-            className="absolute bottom-1/4 right-1/4 w-96 h-96 bg-purple-500/10 rounded-full blur-3xl"
+            className="absolute bottom-1/4 right-1/4 w-72 h-72 md:w-96 md:h-96 bg-purple-500/10 rounded-full blur-3xl"
             style={{
-              transform: `translate(-${glowParallax * 0.5}px, -${glowParallax}px)`,
+              transform: `translate(-${
+                glowParallax * 0.5
+              }px, -${glowParallax}px)`,
             }}
           />
-
-          {/* Content with Parallax */}
-          <div
-            className="relative z-10 w-full"
-            style={{
-              transform: `translateY(-${contentParallax}px)`,
-              opacity: Math.max(0, 1 - scrollY / 500),
-            }}
-          >
-            <div className="relative z-10 max-w-7xl mx-auto px-0 w-full">
-              <div className="grid lg:grid-cols-2 gap-12 items-center">
-                {/* Left content */}
-                <motion.div
-                  className="space-y-4 mt-[20rem] sm:mt-[25rem] sm:ml-[1rem] md:mt-[35rem] md:ml-[2rem] lg:mt-[16rem]"
-                  initial="hidden"
-                  animate="visible"
-                  transition={{ staggerChildren: 0.9 }}
-                >
-                   <motion.p
-                                      variants={fadeUp}
-                                      className="text-xs sm:text-sm md:text-sm lg:text-base font-semibold uppercase text-white">
-                    Connect with us
-                  </motion.p>
-                  <motion.h1
-                    variants={fadeUp}
-                    className="md:text-5xl sm:text-3xl leading-none tracking-tight"
+          {/* Content */}
+          <div className="relative z-10 w-full flex flex-col md:flex-row items-center justify-center px-6 md:px-12 lg:px-20 py-12 md:py-24">
+            <motion.div
+              className="w-full md:w-1/2 max-w-3xl md:max-w-7xl text-left space-y-6 md:pr-12"
+              initial="hidden"
+              animate="visible"
+              variants={fadeUp}
+            >
+              <div className="relative z-10 max-w-7xl mx-auto px-0 w-full">
+                <div className="grid  gap-12 items-center">
+                  {/* Left content */}
+                  <motion.div
+                    className="space-y-4  sm:px-6 md:px-8 lg:px-0 text-white max-w-3xl mx-auto lg:mx-0 pb-12 lg:pb-0"
+                    initial="hidden"
+                    animate="visible"
+                    transition={{ staggerChildren: 0.9 }}
                   >
-                    Get in touch <br />
-                    <span className="text-transparent bg-clip-text bg-orange-400">with us</span>
-                  </motion.h1>
-
-
-                </motion.div>
+                    <motion.p
+                      variants={fadeUp}
+                      className="text-xs sm:text-sm md:text-sm lg:text-base font-semibold uppercase text-white"
+                    >
+                      Connect with us
+                    </motion.p>
+                    <motion.h1
+                      variants={fadeUp}
+                      className="md:text-5xl sm:text-3xl leading-none tracking-tight"
+                    >
+                      Get in touch <br />
+                      <span className="text-transparent bg-clip-text bg-orange-400">
+                        with us
+                      </span>
+                    </motion.h1>
+                  </motion.div>
+                </div>
               </div>
-            </div>
+            </motion.div>
+            <div className="hidden md:block md:w-1/2" />
           </div>
         </section>
 
@@ -175,16 +179,16 @@ export default function CoursePg() {
                 viewport={{ once: true }}
                 className="text-white p-8 lg:p-12"
               >
-               
                 <h2 className="text-3xl lg:text-4xl font-bold mb-6 leading-tight">
-                 Interested in learning online? Contact Us
+                  Interested in learning online? Contact Us
                 </h2>
 
                 <p className="text-base lg:text-lg text-gray-600 mb-12 leading-relaxed text-justify">
-                 We’d love to hear from you. From course details and program selection to enrollment support, our team is available to assist you at every stage. Send us a message and we’ll help you move forward with clarity.
+                  We’d love to hear from you. From course details and program
+                  selection to enrollment support, our team is available to
+                  assist you at every stage. Send us a message and we’ll help
+                  you move forward with clarity.
                 </p>
-
-               
               </motion.div>
 
               {/* Right Column - Contact Form */}
@@ -247,9 +251,7 @@ export default function CoursePg() {
                     ></textarea>
                   </div>
 
-                  <div className="flex items-center">
-                   
-                  </div>
+                  <div className="flex items-center"></div>
 
                   <button
                     onClick={handleSubmit}

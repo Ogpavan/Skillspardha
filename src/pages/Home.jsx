@@ -29,9 +29,9 @@ const Home = () => {
   return (
     <>
       <Navbar />
-      <div className="min-h-screen bg-black text-white overflow-x-hidden">
+      <div className=" bg-black text-white overflow-x-hidden">
         {/* Hero Section */}
-        <section className="items-center min-h-[80vh] sm:min-h-[90vh] overflow-hidden">
+        <section className="items-center min-h-[70vh] sm:min-h-[90vh] overflow-hidden  ">
           {/* BG Video */}
           <video
             autoPlay
@@ -55,13 +55,9 @@ const Home = () => {
           <div className="absolute bottom-1/4 right-1/4 w-72 h-72 md:w-96 md:h-96 bg-purple-500/10 rounded-full blur-3xl" />
 
           {/* Content */}
-         <div className="relative z-10 w-full flex justify-center sm:justify-center px-4 sm:px-6 md:px-8 lg:px-20 pt-[50vh] pb-16">
-
-
-
-
+          <div className="relative z-10 w-full flex justify-center sm:justify-center px-4 sm:px-6 md:px-8 lg:px-20 pt-[30vh] pb-16">
             <motion.div
-              className="w-full max-w-[90vw] sm:max-w-md md:w-1/2 md:max-w-xl text-left space-y-6 translate-x-[-8px] sm:translate-x-0 md:pr-12"
+              className="w-full max-w-[90vw] sm:max-w-md md:w-1/2 md:max-w-xl text-left space-y-6 -translate-x-2 sm:translate-x-0 md:pr-12"
               initial="hidden"
               animate="visible"
               variants={fadeUp}
@@ -70,9 +66,7 @@ const Home = () => {
                 variants={fadeUp}
                 className="text-3xl sm:text-sm md:text-5xl lg:text-6xl font-semibold leading-tight"
               >
-                <span className="block whitespace-nowrap">
-                  Making Learning
-                </span>
+                <span className="block whitespace-nowrap">Making Learning</span>
                 <span className="block text-transparent bg-clip-text bg-linear-to-r from-orange-400 to-orange-600">
                   Limitless
                 </span>
