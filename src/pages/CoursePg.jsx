@@ -114,51 +114,60 @@ export default function CoursePg() {
   return (
     <>
       <Navbar />
-      <div className="min-h-screen bg-gray-100">
-        {/* Hero Section with Background Image */}
-        <section className="relative flex items-center min-h-[80vh] sm:min-h-[90vh] overflow-hidden">
+      <div className="bg-black text-white overflow-x-hidden">
+        {/* Hero Section */}
+        <section className="relative flex items-center min-h-[70vh] sm:min-h-screen overflow-hidden">
+          {/* BG Image */}
           <img
-            src={
-              "https://images.unsplash.com/photo-1522202176988-66273c2fd55f?w=1600&q=80"
-            }
+            src="https://images.unsplash.com/photo-1522202176988-66273c2fd55f?w=1600&q=80"
             alt="Background"
-            className="absolute inset-0 w-full h-full object-cover brightness-[0.5]"
+            className="absolute top-0 left-0 w-screen h-screen object-cover brightness-[0.5]"
             style={{
               transform: `translateY(${bgParallax}px)`,
             }}
           />
-          <div className="absolute inset-0 bg-black/60" />
-          <div className="absolute inset-0 opacity-[0.015] pointer-events-none bg-[url('data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIzMDAiIGhlaWdodD0iMzAwIj48ZmlsdGVyIGlkPSJhIj48ZmVUdXJidWxlbmNlIGJhc2VGcmVxdWVuY3k9Ii43NSIgc3RpdGNoVGlsZXM9InN0aXRjaCIgdHlwZT0iZnJhY3RhbE5vaXNlIi8+PGZlQ29sb3JNYXRyaXggdHlwZT0ic2F0dXJhdGUiIHZhbHVlcz0iMCIvPjwvZmlsdGVyPjxyZWN0IHdpZHRoPSIxMDAlIiBoZWlnaHQ9IjEwMCUiIGZpbHRlcj0idXJsKCNhKSIvPjwvc3ZnPg==')]" />
-          <div
-            className="absolute top-1/4 left-1/4 w-72 h-72 md:w-96 md:h-96 bg-blue-500/10 rounded-full blur-3xl"
-            style={{
-              transform: `translate(${glowParallax * 0.5
-                }px, ${glowParallax}px)`,
-            }}
+
+          {/* Overlay */}
+          <div className="absolute inset-0 bg-black/60 z-[1]" />
+
+          {/* Noise Overlay */}
+          <div className="absolute inset-0 opacity-[0.015] pointer-events-none z-[2] bg-[url('data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIzMDAiIGhlaWdodD0iMzAwIj48ZmlsdGVyIGlkPSJhIj48ZmVUdXJidWxlbmNlIGJhc2VGcmVxdWVuY3k9Ii43NSIgc3RpdGNoVGlsZXM9InN0aXRjaCIgdHlwZT0iZnJhY3RhbE5vaXNlIi8+PGZlQ29sb3JNYXRyaXggdHlwZT0ic2F0dXJhdGUiIHZhbHVlcz0iMCIvPjwvZmlsdGVyPjxyZWN0IHdpZHRoPSIxMDAlIiBoZWlnaHQ9IjEwMCUiIGZpbHRlcj0idXJsKCNhKSIvPjwvc3ZnPg==')]" />
+
+          {/* Glow Effects */}
+          <motion.div
+            variants={float}
+            animate="animate"
+            style={{ transform: `translateY(${glowParallax}px)` }}
+            className="absolute top-1/4 left-1/4 w-72 h-72 md:w-96 md:h-96 bg-blue-500/10 rounded-full blur-3xl z-[3]"
           />
-          <div
-            className="absolute bottom-1/4 right-1/4 w-72 h-72 md:w-96 md:h-96 bg-purple-500/10 rounded-full blur-3xl"
-            style={{
-              transform: `translate(-${glowParallax * 0.5
-                }px, -${glowParallax}px)`,
-            }}
+          <motion.div
+            variants={float}
+            animate="animate"
+            style={{ transform: `translateY(${glowParallax}px)` }}
+            className="absolute bottom-1/4 right-1/4 w-72 h-72 md:w-96 md:h-96 bg-purple-500/10 rounded-full blur-3xl z-[3]"
           />
-          <div className="relative z-10 w-full flex flex-col md:flex-row items-center justify-center px-6 md:px-12 lg:px-20 py-12 md:py-24">
+
+          {/* Content */}
+          <div className="relative z-10 w-full flex justify-center sm:justify-center px-4 sm:px-6 md:px-8 lg:px-20 pt-[30vh] pb-16">
             <motion.div
-              className="w-full md:w-1/2 max-w-3xl md:max-w-7xl text-left space-y-6 md:pr-12"
+              className="w-full max-w-[90vw] sm:max-w-md md:w-1/2 md:max-w-xl text-left space-y-6 -translate-x-2 sm:translate-x-0 md:pr-12"
               initial="hidden"
               animate="visible"
               variants={fadeUp}
             >
-              <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold leading-tight">
-                Your dreams, <br />
-                <span className="text-transparent bg-clip-text bg-linear-to-r from-orange-400 to-orange-600">
-                  our mission
+              <motion.h1
+                variants={fadeUp}
+                className="text-3xl sm:text-sm md:text-5xl lg:text-6xl font-semibold leading-tight"
+              >
+                <span className="block whitespace-nowrap">Your Dreams,</span>
+                <span className="block text-transparent bg-clip-text bg-linear-to-r from-orange-400 to-orange-600">
+                  Our Mission
                 </span>
-              </h1>
+              </motion.h1>
+
               <p className="text-base sm:text-lg md:text-xl text-gray-300 max-w-2xl leading-relaxed">
-                Learn with clarity, not clutter. No shortcuts. No noise. Just
-                intentional progress — one skill at a time.
+              Stop consuming content. Start building skill.
+Progress that shows in your work.
               </p>
               <motion.button
                 whileHover={{
@@ -170,18 +179,20 @@ export default function CoursePg() {
                   scale: 0.98,
                   transition: { duration: 0.2 },
                 }}
+                onClick={() => navigate("/courses")}
                 className="btn px-6 py-3 text-base sm:text-lg font-semibold flex items-center gap-2"
               >
                 Explore
                 <ArrowRight className="w-5 h-5" />
               </motion.button>
             </motion.div>
+            {/* Optionally, add an empty right side for spacing on desktop */}
             <div className="hidden md:block md:w-1/2" />
           </div>
         </section>
 
         {/* Course Categories Section */}
-        <section className="py-20 px-4 sm:px-6 lg:px-8 bg-white">
+        <section className="relative py-10 px-2 sm:px-6 lg:px-8 bg-white">
           <div className="max-w-7xl mx-auto">
             <div className="mb-8">
               <p className="text-[11px] font-semibold text-gray-400 uppercase tracking-wider text-center mb-2">
@@ -199,7 +210,7 @@ export default function CoursePg() {
                   placeholder="Search courses by name, topic, or keyword..."
                   value={searchQuery}
                   onChange={(e) => setSearchQuery(e.target.value)}
-                  className="w-full pl-12 pr-4 py-3.5 border border-gray-300 rounded-xl focus:outline-none focus:ring-2 focus:ring-gray-900 focus:border-transparent text-base"
+                  className="w-full pl-12 pr-4 py-3.5 border border-gray-300 rounded-xl focus:outline-none focus:ring-2 focus:ring-gray-900 focus:border-transparent text-base text-gray-900"
                 />
               </div>
             </div>
@@ -338,12 +349,9 @@ export default function CoursePg() {
                               <button
                                 className="group inline-flex items-center justify-center gap-2 px-3 sm:px-6 py-2 sm:py-2.5 text-xs sm:text-sm font-semibold uppercase tracking-wide bg-white text-black border-2 border-black cursor-pointer w-auto sm:w-fit hover:bg-gray-200 hover:text-black transition-all duration-300"
                                 onClick={() => {
-                                  // const cat = encodeURIComponent(activeCategory);
                                   navigate(
                                     `/courses/${encodeURIComponent(activeCategory)}/${course.id}`
                                   );
-
-
                                 }}
                               >
                                 <span className="hidden sm:inline whitespace-nowrap">
