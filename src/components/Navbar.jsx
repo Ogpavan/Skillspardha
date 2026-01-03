@@ -47,6 +47,9 @@ const PremiumNavbar = () => {
       case "Contact":
         navigate("/contact");
         break;
+         case "Hackathons":
+        navigate("/hackathon");
+        break;
       default:
         break;
     }

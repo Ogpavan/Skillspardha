@@ -101,7 +101,7 @@ export default function About() {
             >
               <h1 className="text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold leading-tight">
                 Your dreams, <br />
-                <span className="text-transparent bg-clip-text bg-linear-to-r from-orange-400 to-orange-600">
+                <span className="text-transparent bg-clip-text bg-gradient-to-r from-orange-400 to-orange-600">
                   our mission
                 </span>
               </h1>
@@ -197,7 +197,7 @@ export default function About() {
             {/* Images Grid */}
             <div className="grid grid-cols-2 gap-4 sm:gap-5">
               <div
-                className={`rounded-3xl h-64 sm:h-72 overflow-hidden bg-linear-to-br from-[#f5b5a0] to-[#e89480] hover:scale-105 transition-all duration-700 ${
+                className={`rounded-3xl h-64 sm:h-72 overflow-hidden bg-gradient-to-br from-[#f5b5a0] to-[#e89480] hover:scale-105 transition-all duration-700 ${
                   isVisible ? "opacity-100 scale-100" : "opacity-0 scale-90"
                 }`}
                 style={{
@@ -211,7 +211,7 @@ export default function About() {
                 />
               </div>
               <div
-                className={`rounded-3xl row-span-2 min-h-[450px] sm:min-h-[500px] overflow-hidden bg-linear-to-br from-[#c4a365] to-[#9d8b70] hover:scale-105 transition-all duration-700 ${
+                className={`rounded-3xl row-span-2 min-h-[450px] sm:min-h-[500px] overflow-hidden bg-gradient-to-br from-[#c4a365] to-[#9d8b70] hover:scale-105 transition-all duration-700 ${
                   isVisible ? "opacity-100 scale-100" : "opacity-0 scale-90"
                 }`}
                 style={{
@@ -225,7 +225,7 @@ export default function About() {
                 />
               </div>
               <div
-                className={`rounded-3xl h-48 sm:h-56 overflow-hidden bg-linear-to-br from-[#c4c1b8] to-[#a8a59d] hover:scale-105 transition-all duration-700 ${
+                className={`rounded-3xl h-48 sm:h-56 overflow-hidden bg-gradient-to-br from-[#c4c1b8] to-[#a8a59d] hover:scale-105 transition-all duration-700 ${
                   isVisible ? "opacity-100 scale-100" : "opacity-0 scale-90"
                 }`}
                 style={{

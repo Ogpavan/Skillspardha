@@ -39,7 +39,7 @@ const LearnerSection = () => {
   }, []);
 
   return (
-    <section ref={sectionRef} className="w-full bg-[#f4f4f4] py-20">
+    <section ref={sectionRef} className="w-full bg-[#f4f4f4] py-20 mt-32 sm:mt-0">
       <div className="max-w-7xl mx-auto px-6 grid md:grid-cols-2 gap-16 items-center">
 
         {/* LEFT TEXT */}
@@ -50,28 +50,28 @@ const LearnerSection = () => {
               : 'opacity-0 -translate-x-12'
           }`}
         >
-          <h2 className="text-4xl font-bold leading-tight text-black mb-6">
+          <h2 className="text-2xl sm:text-3xl md:text-4xl font-bold leading-tight text-black mb-6">
             Join a growing community of <br /><span className="text-orange-400">18,000+ learners!</span>
           </h2>
 
-          <p className="text-gray-700 leading-relaxed mb-4">
+          <p className="text-sm sm:text-base text-gray-700 leading-relaxed mb-4">
             Discover the journeys of our learners! Delve into their experiences and insights as they navigate
             their educational paths.
           </p>
 
-          <p className="text-gray-700 leading-relaxed mb-10">
+          <p className="text-sm sm:text-base text-gray-700 leading-relaxed mb-10">
             Explore the inspiring stories of our learners! Gain insights into their unique experiences and the
             challenges they overcome on their educational journeys.
           </p>
 
           {/* GRID ICON LIST */}
-          <div className="grid grid-cols-2 gap-y-4 gap-x-8">
+          <div className="grid grid-cols-2 gap-y-4 gap-x-4 sm:gap-x-8">
             {items.map((item, index) => {
               const IconComponent = item.icon;
               return (
                 <div 
                   key={index} 
-                  className={`flex items-center gap-3 transition-all duration-700 ease-out ${
+                  className={`flex items-center gap-2 sm:gap-3 transition-all duration-700 ease-out ${
                     isVisible 
                       ? 'opacity-100 translate-y-0' 
                       : 'opacity-0 translate-y-4'
@@ -80,10 +80,10 @@ const LearnerSection = () => {
                     transitionDelay: isVisible ? `${index * 100 + 300}ms` : '0ms' 
                   }}
                 >
-                  <div className="w-8 h-8 rounded-full bg-blue-500 text-white flex items-center justify-center shadow">
-                    <IconComponent size={18} className="" />
+                  <div className="w-7 h-7 sm:w-8 sm:h-8 rounded-full bg-blue-500 text-white flex items-center justify-center shadow flex-shrink-0">
+                    <IconComponent size={16} className="sm:w-[18px] sm:h-[18px]" />
                   </div>
-                  <span className="text-gray-900 font-medium">{item.text}</span>
+                  <span className="text-sm sm:text-base text-gray-900 font-medium">{item.text}</span>
                 </div>
               );
             })}
