@@ -122,7 +122,7 @@ export default function TestimonialsSection() {
             REVIEWS FROM GLOBAL LEARNERS
           </p>
           <h2 className="text-[32px] sm:text-[42px] md:text-[48px] font-bold text-[#1a1a1a] leading-[1.2] px-4">
-            What our clients say about us
+            What our learners say about us
           </h2>
         </div>
 
