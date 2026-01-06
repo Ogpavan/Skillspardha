@@ -197,7 +197,8 @@ export default function CoursePg() {
             >
               <motion.h1
                 variants={fadeUp}
-                className="text-3xl sm:text-sm md:text-5xl lg:text-6xl font-semibold leading-tight"
+                className="text-xl sm:text-base md:text-4xl lg:text-6xl font-semibold leading-tight"
+
               >
                 <span className="block whitespace-nowrap">Where Ideas Turn</span>
                 <span className="block text-transparent bg-clip-text bg-linear-to-r from-orange-400 to-orange-600">
