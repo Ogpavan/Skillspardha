@@ -5,13 +5,13 @@ import { motion, AnimatePresence } from "framer-motion";
 import Logo from "../assets/Logo.png";
 import SignupPopup from "./Signup";
 
-// Add "Home" as the first item
-const navItems = ["Home", "About", "Courses", "Contact"];
+// Removed "Home" - only About, Courses, Hackathon, Contact
+const navItems = ["About", "Courses", "Hackathon", "Contact"];
 
 const PremiumNavbar = () => {
   const [isScrolled, setIsScrolled] = useState(false);
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
-  const [activeItem, setActiveItem] = useState("Home");
+  const [activeItem, setActiveItem] = useState("");
   const [hoveredItem, setHoveredItem] = useState(null);
   const [showNavbar, setShowNavbar] = useState(true);
   const [lastScrollY, setLastScrollY] = useState(0);
@@ -21,10 +21,10 @@ const PremiumNavbar = () => {
 
   useEffect(() => {
     const path = location.pathname;
-    if (path === "/" || path === "/home") setActiveItem("Home");
+    if (path === "/" || path === "/home") setActiveItem("");
     else if (path === "/about") setActiveItem("About");
     else if (path === "/courses") setActiveItem("Courses");
-    // else if (path === "/hackathons") setActiveItem("Hackathons");
+    else if (path === "/hackathon") setActiveItem("Hackathon");
     else if (path === "/contact") setActiveItem("Contact");
     else setActiveItem("");
   }, [location]);
@@ -32,23 +32,17 @@ const PremiumNavbar = () => {
   const handleNavClick = (item) => {
     setIsMobileMenuOpen(false);
     switch (item) {
-      case "Home":
-        navigate("/");
-        break;
       case "About":
         navigate("/about");
         break;
       case "Courses":
         navigate("/courses");
         break;
-        // case "Hackathons":
-        //   navigate("/hackathons");
+      case "Hackathon":
+        navigate("/hackathon");
         break;
       case "Contact":
         navigate("/contact");
-        break;
-         case "Hackathons":
-        navigate("/hackathon");
         break;
       default:
         break;
