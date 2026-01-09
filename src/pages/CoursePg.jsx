@@ -24,7 +24,7 @@ export default function CoursePg() {
   useEffect(() => {
     let mounted = true;
     setLoadingCourses(true);
-    fetch("/courses.json")
+    fetch("https://app.skillspardha.com/api/display-courses/by-category")
       .then((res) => res.json())
       .then((data) => {
         if (!mounted) return;
@@ -35,7 +35,7 @@ export default function CoursePg() {
         }
       })
       .catch((err) => {
-        console.error("Failed to load /courses.json", err);
+        console.error("Failed to load courses from API", err);
       })
       .finally(() => mounted && setLoadingCourses(false));
     return () => {
@@ -100,16 +100,16 @@ export default function CoursePg() {
   const filteredCourses = !searchQuery?.trim()
     ? currentCourses
     : allCourses.filter((course) => {
-      const query = searchQuery.trim().toLowerCase();
+        const query = searchQuery.trim().toLowerCase();
 
-      const searchableText = `
+        const searchableText = `
         ${course?.title || ""}
         ${course?.description || ""}
         ${(course?.tags || []).join(" ")}
       `.toLowerCase();
 
-      return searchableText.includes(query);
-    });
+        return searchableText.includes(query);
+      });
 
   return (
     <>
@@ -166,8 +166,8 @@ export default function CoursePg() {
               </motion.h1>
 
               <p className="text-base sm:text-lg md:text-xl text-gray-300 max-w-2xl leading-relaxed">
-              Stop consuming content. Start building skill.
-Progress that shows in your work.
+                Stop consuming content. Start building skill. Progress that
+                shows in your work.
               </p>
               <motion.button
                 whileHover={{
@@ -227,10 +227,11 @@ Progress that shows in your work.
                           setActiveCategory(category);
                           setSearchQuery("");
                         }}
-                        className={`pb-2 text-sm font-semibold transition relative ${category === activeCategory
-                          ? "text-gray-900"
-                          : "text-gray-500 hover:text-gray-800"
-                          }`}
+                        className={`pb-2 text-sm font-semibold transition relative ${
+                          category === activeCategory
+                            ? "text-gray-900"
+                            : "text-gray-500 hover:text-gray-800"
+                        }`}
                       >
                         {category}
                         {category === activeCategory && (
@@ -253,10 +254,11 @@ Progress that shows in your work.
                           setActiveCategory(category);
                           setSearchQuery("");
                         }}
-                        className={`w-full text-left px-4 py-3 text-base font-medium transition-all ${category === activeCategory
-                          ? "text-gray-900 border-l-4 border-orange-400 bg-gray-50"
-                          : "text-gray-600 hover:text-gray-900 border-l-4 border-transparent hover:border-gray-300"
-                          }`}
+                        className={`w-full text-left px-4 py-3 text-base font-medium transition-all ${
+                          category === activeCategory
+                            ? "text-gray-900 border-l-4 border-orange-400 bg-gray-50"
+                            : "text-gray-600 hover:text-gray-900 border-l-4 border-transparent hover:border-gray-300"
+                        }`}
                       >
                         {category}
                       </button>
@@ -273,7 +275,7 @@ Progress that shows in your work.
                 ) : filteredCourses.length === 0 ? (
                   <div className="text-center py-16">
                     <p className="text-xl text-gray-500">
-                      No courses found matching  "{searchQuery}"
+                      No courses found matching "{searchQuery}"
                     </p>
                     <button
                       onClick={() => setSearchQuery("")}
@@ -350,7 +352,9 @@ Progress that shows in your work.
                                 className="group inline-flex items-center justify-center gap-2 px-3 sm:px-6 py-2 sm:py-2.5 text-xs sm:text-sm font-semibold uppercase tracking-wide bg-white text-black border-2 border-black cursor-pointer w-auto sm:w-fit hover:bg-gray-200 hover:text-black transition-all duration-300"
                                 onClick={() => {
                                   navigate(
-                                    `/courses/${encodeURIComponent(activeCategory)}/${course.id}`
+                                    `/courses/${encodeURIComponent(
+                                      activeCategory
+                                    )}/${course.id}`
                                   );
                                 }}
                               >

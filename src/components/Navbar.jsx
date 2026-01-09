@@ -134,7 +134,10 @@ const PremiumNavbar = () => {
             <div className="hidden lg:flex items-center space-x-3">
               <button
                 className="btn relative overflow-hidden group isolate"
-                onClick={() => setIsSignupOpen(true)}
+                onClick={() =>
+                  (window.location.href =
+                    "https://app.skillspardha.com/auth/signup")
+                }
               >
                 <span className="relative z-10">Sign up</span>
                 <div
@@ -182,7 +185,10 @@ const PremiumNavbar = () => {
             <div className="mt-8 space-y-3">
               <button
                 className="btn relative overflow-hidden group isolate w-full"
-                onClick={() => setIsSignupOpen(true)}
+                onClick={() =>
+                  (window.location.href =
+                    "https://app.skillspardha.com/auth/signup")
+                }
               >
                 <span className="relative z-10">Sign up</span>
                 <div

@@ -17,6 +17,7 @@ export default function CoursePg() {
     message: "",
     saveInfo: false,
   });
+  const [sent, setSent] = useState(false);
 
   useEffect(() => {
     window.scrollTo(0, 0);
@@ -71,20 +72,47 @@ export default function CoursePg() {
     }));
   };
 
-  const handleSubmit = () => {
+  const handleSubmit = async (e) => {
+    e.preventDefault();
     if (!formData.name || !formData.email || !formData.message) {
       alert("Please fill in all required fields");
       return;
     }
-    console.log("Form submitted:", formData);
-    alert("Message sent successfully!");
-    setFormData({
-      name: "",
-      email: "",
-      subject: "",
-      message: "",
-      saveInfo: false,
-    });
+    try {
+      const response = await fetch(
+        "https://app.skillspardha.com/api/contactus",
+        {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify({
+            name: formData.name,
+            email: formData.email,
+            subject: formData.subject,
+            message: formData.message,
+          }),
+          credentials: "include",
+        }
+      );
+
+      const data = await response.json();
+      if (response.ok) {
+        setSent(true);
+        setFormData({
+          name: "",
+          email: "",
+          subject: "",
+          message: "",
+          saveInfo: false,
+        });
+        setTimeout(() => setSent(false), 3000); // Reset after 3 seconds
+      } else {
+        alert(data.error || "Failed to send message.");
+      }
+    } catch (error) {
+      alert("An error occurred. Please try again later.");
+    }
   };
 
   const bgParallax = scrollY * 0.5;
@@ -206,7 +234,7 @@ export default function CoursePg() {
                   Reach out and our team will connect with you shortly.
                 </p>
 
-                <div className="space-y-6">
+                <form onSubmit={handleSubmit} className="space-y-6">
                   <div>
                     <input
                       type="text"
@@ -254,13 +282,20 @@ export default function CoursePg() {
                   <div className="flex items-center"></div>
 
                   <button
-                    onClick={handleSubmit}
+                    type="submit"
                     className="w-full bg-orange-400 hover:bg-orange-500 text-white font-semibold py-4 px-6 rounded-lg transition duration-200 flex items-center justify-center gap-2 shadow-lg hover:shadow-xl"
+                    disabled={sent}
                   >
-                    Send message
-                    <ArrowRight size={20} />
+                    {sent ? (
+                      "Message Sent!"
+                    ) : (
+                      <>
+                        Send message
+                        <ArrowRight size={20} />
+                      </>
+                    )}
                   </button>
-                </div>
+                </form>
               </motion.div>
             </div>
           </div>
