@@ -20,15 +20,7 @@ const CourseDetailPage = () => {
   const [courseData, setCourseData] = useState(null);
   const [loading, setLoading] = useState(true);
   const [openSections, setOpenSections] = useState({});
-  const [showEnrollPopup, setShowEnrollPopup] = useState(false);
-  const [enrollForm, setEnrollForm] = useState({
-    name: "",
-    email: "",
-    password: "",
-  });
   const [enrollError, setEnrollError] = useState("");
-  const [enrollSuccess, setEnrollSuccess] = useState("");
-  const [buyLoading, setBuyLoading] = useState(false);
 
   useEffect(() => {
     fetchCourseData();
@@ -60,66 +52,6 @@ const CourseDetailPage = () => {
     }));
   };
 
-  const handleEnrollChange = (e) =>
-    setEnrollForm({ ...enrollForm, [e.target.name]: e.target.value });
-
-  const handleEnrollSubmit = async (e) => {
-    e.preventDefault();
-    setEnrollError("");
-    setEnrollSuccess("");
-    if (
-      !enrollForm.name.trim() ||
-      !enrollForm.email.trim() ||
-      !enrollForm.password.trim()
-    ) {
-      setEnrollError("All fields are required.");
-      return;
-    }
-    setBuyLoading(true);
-
-    // Simulate signup API call (replace with your API if needed)
-    try {
-      // You can call your signup API here if needed
-      // await fetch(...)
-
-      // On success, open payment
-      handleBuy();
-    } catch (err) {
-      setEnrollError("Signup failed. Please try again.");
-    }
-    setBuyLoading(false);
-  };
-
-  const handleBuy = () => {
-    setEnrollError("");
-    setEnrollSuccess("");
-    if (!courseData?.price?.[1]) {
-      setEnrollError("Invalid course price.");
-      return;
-    }
-    const amount = Number(courseData.price[1].replace(/[^0-9]/g, "")) * 100;
-    const options = {
-      key: "rzp_test_xxxxxxxxxxxxx",
-      amount,
-      currency: "INR",
-      name: courseData.t,
-      description: courseData.st,
-      image: courseData.image || courseData.meta?.[3],
-      handler: (response) => {
-        setEnrollSuccess(
-          `Enrolled successfully! Payment ID: ${response.razorpay_payment_id}`
-        );
-      },
-      prefill: {
-        name: enrollForm.name,
-        email: enrollForm.email,
-      },
-      theme: { color: "#F37254" },
-    };
-    const rzp = new window.Razorpay(options);
-    rzp.open();
-  };
-
   /* ---------- UI STATES ---------- */
 
   if (loading) {
@@ -130,7 +62,7 @@ const CourseDetailPage = () => {
     );
   }
 
-  if (enrollError && !showEnrollPopup) {
+  if (enrollError) {
     return (
       <div className="min-h-screen bg-gray-50 flex items-center justify-center">
         <div className="text-red-600 text-lg font-semibold">{enrollError}</div>
@@ -343,7 +275,7 @@ const CourseDetailPage = () => {
                 </div>
 
                 <button
-                  onClick={() => setShowEnrollPopup(true)}
+                  onClick={() => navigate("/info")}
                   className="inline-flex items-center justify-center gap-1 px-6 py-2 text-sm font-medium uppercase tracking-wide bg-orange-500 text-white border-2 border-orange-500 cursor-pointer   hover:bg-orange-600 hover:border-orange-600 w-full"
                 >
                   Enroll Now
@@ -353,129 +285,6 @@ const CourseDetailPage = () => {
           </div>
         </div>
       </div>
-
-      {/* Enroll Popup */}
-      {showEnrollPopup && (
-        <div className="fixed inset-0 z-[100] flex items-center justify-center bg-black/60 backdrop-blur-sm">
-          <div className="bg-white rounded-xl shadow-2xl p-6 relative w-full max-w-sm mx-4">
-            <button
-              className="absolute top-3 right-3 text-gray-500 hover:text-gray-700 text-xl"
-              onClick={() => setShowEnrollPopup(false)}
-              aria-label="Close enroll modal"
-            >
-              <X />
-            </button>
-            {/* Secured Payment Banner */}
-
-            {enrollSuccess ? (
-              <div className="flex flex-col items-center gap-4 py-8">
-                <CheckCircle
-                  size={48}
-                  className="text-green-500 mb-2 animate-bounce"
-                />
-                <h2 className="text-xl font-bold text-green-600">
-                  {enrollSuccess}
-                </h2>
-                <button
-                  className="bg-blue-500 hover:bg-blue-600 text-white font-semibold rounded-lg px-4 py-2 mt-2"
-                  onClick={() => setShowEnrollPopup(false)}
-                >
-                  Close
-                </button>
-              </div>
-            ) : (
-              <>
-                <h2 className="!text-lg font-bold text-center mb-2">
-                  Enroll in {courseData.t}
-                </h2>
-                <form onSubmit={handleEnrollSubmit} className="space-y-3">
-                  <div>
-                    <label
-                      htmlFor="enroll-name"
-                      className="block text-xs font-medium text-gray-700 mb-1"
-                    >
-                      Name
-                    </label>
-                    <input
-                      id="enroll-name"
-                      name="name"
-                      type="text"
-                      required
-                      value={enrollForm.name}
-                      onChange={handleEnrollChange}
-                      className="w-full border border-gray-300 rounded-lg px-3 py-1 text-sm focus:outline-none focus:ring-2 focus:ring-orange-400"
-                    />
-                  </div>
-                  <div>
-                    <label
-                      htmlFor="enroll-email"
-                      className="block text-xs font-medium text-gray-700 mb-1"
-                    >
-                      Email
-                    </label>
-                    <input
-                      id="enroll-email"
-                      name="email"
-                      type="email"
-                      required
-                      value={enrollForm.email}
-                      onChange={handleEnrollChange}
-                      className="w-full border border-gray-300 rounded-lg px-3 py-1 text-sm focus:outline-none focus:ring-2 focus:ring-orange-400"
-                    />
-                  </div>
-                  <div>
-                    <label
-                      htmlFor="enroll-password"
-                      className="block text-xs font-medium text-gray-700 mb-1"
-                    >
-                      Password
-                    </label>
-                    <input
-                      id="enroll-password"
-                      name="password"
-                      type="password"
-                      required
-                      value={enrollForm.password}
-                      onChange={handleEnrollChange}
-                      className="w-full border border-gray-300 rounded-lg px-3 py-1 text-sm focus:outline-none focus:ring-2 focus:ring-orange-400"
-                    />
-                  </div>
-                  {enrollError && (
-                    <p className="text-red-500 text-xs text-center">
-                      {enrollError}
-                    </p>
-                  )}
-                  <button
-                    type="submit"
-                    disabled={buyLoading}
-                    className="w-full bg-orange-500 hover:bg-orange-600 text-white font-semibold rounded-lg px-3 py-1.5 text-sm transition-colors duration-200"
-                  >
-                    {buyLoading ? "Processing..." : "Buy Now"}
-                  </button>
-                </form>
-                <div className="flex items-center gap-2 my-4 justify-center">
-                  <svg
-                    className="w-5 h-5 text-green-600"
-                    fill="none"
-                    stroke="currentColor"
-                    strokeWidth={2}
-                    viewBox="0 0 24 24"
-                  >
-                    <path
-                      strokeLinecap="round"
-                      strokeLinejoin="round"
-                      d="M12 11v2m0 4h.01M17 8V7a5 5 0 00-10 0v1a2 2 0 00-2 2v7a2 2 0 002 2h10a2 2 0 002-2v-7a2 2 0 00-2-2z"
-                    />
-                  </svg>
-                  <span className="text-green-700 text-xs font-semibold">
-                    100% Secure Payment powered by Razorpay
-                  </span>
-                </div>
-              </>
-            )}
-          </div>
-        </div>
-      )}
     </div>
   );
 };

@@ -33,6 +33,9 @@ const StudentInfoForm = () => {
       [e.target.name]: e.target.value
     });
   };
+ //scroll to top
+  window.scrollTo(0, 0);
+
 
   const handleSubmit = () => {
     if (!formData.name || !formData.email || !formData.phone || !formData.collegeName || 
