@@ -96,7 +96,7 @@ export default function CoursePg() {
       <Navbar />
       <div className="min-h-screen bg-gray-100">
         {/* Hero Section with Background Image */}
-        <section className="relative flex items-center min-h-[80vh] sm:min-h-[90vh] overflow-hidden">
+        <section className="relative flex items-center min-h-[70vh] sm:min-h-screen overflow-hidden">
           {/* BG Image with Parallax */}
           <img
             src={Bg_contact}

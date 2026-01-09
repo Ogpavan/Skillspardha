@@ -5,8 +5,8 @@ import { motion, AnimatePresence } from "framer-motion";
 import Logo from "../assets/Logo.png";
 import SignupPopup from "./Signup";
 
-// Removed "Home" - only About, Courses, Hackathon, Contact
-const navItems = ["About", "Courses", "Hackathon", "Contact"];
+// Added "Home" to the navigation items
+const navItems = ["Home", "About", "Courses", "Hackathon", "Contact"];
 
 const PremiumNavbar = () => {
   const [isScrolled, setIsScrolled] = useState(false);
@@ -21,7 +21,7 @@ const PremiumNavbar = () => {
 
   useEffect(() => {
     const path = location.pathname;
-    if (path === "/" || path === "/home") setActiveItem("");
+    if (path === "/" || path === "/home") setActiveItem("Home");
     else if (path === "/about") setActiveItem("About");
     else if (path === "/courses") setActiveItem("Courses");
     else if (path === "/hackathon") setActiveItem("Hackathon");
@@ -32,6 +32,9 @@ const PremiumNavbar = () => {
   const handleNavClick = (item) => {
     setIsMobileMenuOpen(false);
     switch (item) {
+      case "Home":
+        navigate("/");
+        break;
       case "About":
         navigate("/about");
         break;
