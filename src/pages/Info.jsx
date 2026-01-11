@@ -1,9 +1,26 @@
-import React, { useState } from "react";
-import { User, Mail, Phone, GraduationCap, Calendar, BookOpen, CreditCard, ArrowLeft } from "lucide-react";
+import React, { useState, useEffect } from "react";
+import { useLocation } from "react-router-dom";
+import {
+  User,
+  Mail,
+  Phone,
+  GraduationCap,
+  Calendar,
+  BookOpen,
+  CreditCard,
+  ArrowLeft,
+} from "lucide-react";
 import Footer from "../components/Footer";
 import studygirl from "../assets/studygirl.webp";
 
+// Add these above your component if you want to customize options
+const batchYears = Array.from({ length: 8 }, (_, i) => 2025 - i); // 2024 to 2017
+const semesters = ["1st", "2nd", "3rd", "4th", "5th", "6th", "7th", "8th"];
+
 const StudentInfoForm = () => {
+  const location = useLocation();
+  const preselectedCourseId = location.state?.courseId || "";
+
   const [formData, setFormData] = useState({
     name: "",
     email: "",
@@ -11,46 +28,121 @@ const StudentInfoForm = () => {
     collegeName: "",
     batch: "",
     semester: "",
-    courseInterested: "",
-    paymentMode: ""
+    courseInterested: preselectedCourseId,
+    paymentMode: "",
   });
   const [buyLoading, setBuyLoading] = useState(false);
+  const [courses, setCourses] = useState([]);
 
-  const courses = [
-    "Web Development",
-    "Data Science",
-    "Machine Learning",
-    "Mobile App Development",
-    "Cybersecurity",
-    "Cloud Computing",
-    "Digital Marketing",
-    "UI/UX Design"
-  ];
+  // Fetch courses for dropdown
+  useEffect(() => {
+    fetch(`http://localhost:5000/api/display-courses/names-ids`, {
+      credentials: "include",
+    })
+      .then((res) => res.json())
+      .then((data) => setCourses(data))
+      .catch(() => setCourses([]));
+  }, []);
 
   const handleChange = (e) => {
     setFormData({
       ...formData,
-      [e.target.name]: e.target.value
+      [e.target.name]: e.target.value,
     });
   };
- //scroll to top
-  window.scrollTo(0, 0);
+  //scroll to top
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, []);
 
+  const openRazorpay = ({ orderId, amount, key, enrollmentId }) => {
+    const options = {
+      key,
+      amount,
+      currency: "INR",
+      name: "Your Company Name",
+      description: "Course Enrollment",
+      order_id: orderId,
+      handler: async function (response) {
+        // On successful payment, update payment_status in backend
+        await fetch(`http://localhost:5000/api/course-buy/mark-paid`, {
+          method: "POST",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify({
+            enrollmentId,
+            razorpay_payment_id: response.razorpay_payment_id,
+            razorpay_order_id: response.razorpay_order_id,
+            razorpay_signature: response.razorpay_signature,
+          }),
+        });
+        alert("Payment successful! Enrollment complete.");
+      },
+      prefill: {
+        name: formData.name,
+        email: formData.email,
+        contact: formData.phone,
+      },
+      theme: { color: "#F37254" },
+    };
+    const rzp = new window.Razorpay(options);
+    rzp.open();
+  };
 
-  const handleSubmit = () => {
-    if (!formData.name || !formData.email || !formData.phone || !formData.collegeName || 
-        !formData.batch || !formData.semester || !formData.courseInterested || !formData.paymentMode) {
+  const handleSubmit = async () => {
+    if (
+      !formData.name ||
+      !formData.email ||
+      !formData.phone ||
+      !formData.collegeName ||
+      !formData.batch ||
+      !formData.semester ||
+      !formData.courseInterested ||
+      !formData.paymentMode
+    ) {
       alert("Please fill in all fields");
       return;
     }
     setBuyLoading(true);
-    console.log("Form submitted:", formData);
-    
-    // Simulate processing
-    setTimeout(() => {
+
+    try {
+      const response = await fetch("http://localhost:5000/api/course-buy", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        credentials: "include",
+        body: JSON.stringify(formData),
+      });
+      const data = await response.json();
+
+      if (response.ok && data.success) {
+        // 1. Call backend to create Razorpay order
+        const paymentRes = await fetch(
+          "http://localhost:5000/api/payment/create-order",
+          {
+            method: "POST",
+            headers: { "Content-Type": "application/json" },
+            body: JSON.stringify({ enrollmentId: data.enrollmentId }),
+          }
+        );
+        const paymentData = await paymentRes.json();
+
+        // 2. Load Razorpay script if not already loaded
+        if (!window.Razorpay) {
+          const script = document.createElement("script");
+          script.src = "https://checkout.razorpay.com/v1/checkout.js";
+          script.onload = () =>
+            openRazorpay({ ...paymentData, enrollmentId: data.enrollmentId });
+          document.body.appendChild(script);
+        } else {
+          openRazorpay({ ...paymentData, enrollmentId: data.enrollmentId });
+        }
+      } else {
+        alert(data.error || "Enrollment failed");
+      }
+    } catch (err) {
+      alert("Server error. Please try again later.");
+    } finally {
       setBuyLoading(false);
-      alert("Form submitted successfully!");
-    }, 1500);
+    }
   };
 
   const handleBack = () => {
@@ -73,7 +165,7 @@ const StudentInfoForm = () => {
           <ArrowLeft className="w-6 h-6 cursor-pointer" />
         </button>
       </div>
-      
+
       {/* Heading at the top center */}
       <div className="text-center py-4">
         <h2 className="text-2xl md:text-3xl font-bold text-gray-900">
@@ -169,27 +261,32 @@ const StudentInfoForm = () => {
 
                 {/* Batch and Semester */}
                 <div className="grid grid-cols-2 gap-4">
-                  {/* Batch */}
+                  {/* Batch (Year) Dropdown */}
                   <div className="group">
                     <label className="block text-xs font-medium text-gray-700 mb-1">
-                      Batch
+                      Batch (Year)
                     </label>
                     <div className="relative">
                       <div className="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none">
                         <Calendar className="h-4 w-4 text-gray-400" />
                       </div>
-                      <input
-                        type="text"
+                      <select
                         name="batch"
                         value={formData.batch}
                         onChange={handleChange}
-                        className="w-full pl-9 pr-3 py-2 bg-white border border-gray-300 rounded-lg text-sm text-gray-900 placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-orange-500 focus:border-transparent transition-all"
-                        placeholder="Enter batch year"
-                      />
+                        className="w-full pl-9 pr-3 py-2 bg-white border border-gray-300 rounded-lg text-sm text-gray-900 focus:outline-none focus:ring-2 focus:ring-orange-500 focus:border-transparent transition-all"
+                      >
+                        <option value="">Select batch year</option>
+                        {batchYears.map((year) => (
+                          <option key={year} value={year}>
+                            {year}
+                          </option>
+                        ))}
+                      </select>
                     </div>
                   </div>
 
-                  {/* Semester */}
+                  {/* Semester Dropdown */}
                   <div className="group">
                     <label className="block text-xs font-medium text-gray-700 mb-1">
                       Semester
@@ -198,14 +295,19 @@ const StudentInfoForm = () => {
                       <div className="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none">
                         <BookOpen className="h-4 w-4 text-gray-400" />
                       </div>
-                      <input
-                        type="text"
+                      <select
                         name="semester"
                         value={formData.semester}
                         onChange={handleChange}
-                        className="w-full pl-9 pr-3 py-2 bg-white border border-gray-300 rounded-lg text-sm text-gray-900 placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-orange-500 focus:border-transparent transition-all"
-                        placeholder="Enter semester"
-                      />
+                        className="w-full pl-9 pr-3 py-2 bg-white border border-gray-300 rounded-lg text-sm text-gray-900 focus:outline-none focus:ring-2 focus:ring-orange-500 focus:border-transparent transition-all"
+                      >
+                        <option value="">Select semester</option>
+                        {semesters.map((sem) => (
+                          <option key={sem} value={sem}>
+                            {sem}
+                          </option>
+                        ))}
+                      </select>
                     </div>
                   </div>
                 </div>
@@ -223,8 +325,8 @@ const StudentInfoForm = () => {
                   >
                     <option value="">Select a course</option>
                     {courses.map((course) => (
-                      <option key={course} value={course}>
-                        {course}
+                      <option key={course.id} value={course.id}>
+                        {course.title}
                       </option>
                     ))}
                   </select>
@@ -238,7 +340,9 @@ const StudentInfoForm = () => {
                   <div className="grid grid-cols-2 gap-3">
                     <button
                       type="button"
-                      onClick={() => setFormData({ ...formData, paymentMode: "UPI" })}
+                      onClick={() =>
+                        setFormData({ ...formData, paymentMode: "UPI" })
+                      }
                       className={`flex items-center justify-center gap-2 px-3 py-2 rounded-lg border-2 transition-all ${
                         formData.paymentMode === "UPI"
                           ? "bg-orange-50 border-orange-500 text-orange-700"
@@ -250,7 +354,9 @@ const StudentInfoForm = () => {
                     </button>
                     <button
                       type="button"
-                      onClick={() => setFormData({ ...formData, paymentMode: "Net Banking" })}
+                      onClick={() =>
+                        setFormData({ ...formData, paymentMode: "Net Banking" })
+                      }
                       className={`flex items-center justify-center gap-2 px-3 py-2 rounded-lg border-2 transition-all ${
                         formData.paymentMode === "Net Banking"
                           ? "bg-orange-50 border-orange-500 text-orange-700"
@@ -288,7 +394,7 @@ const StudentInfoForm = () => {
           </div>
         </div>
       </div>
-      <Footer/>
+      <Footer />
     </div>
   );
 };

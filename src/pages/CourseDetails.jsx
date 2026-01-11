@@ -24,19 +24,23 @@ const CourseDetailPage = () => {
 
   useEffect(() => {
     fetchCourseData();
+    // eslint-disable-next-line
   }, [id]);
 
   const fetchCourseData = async () => {
     setLoading(true);
     setEnrollError("");
     try {
-      const response = await fetch("/coursedetails.json");
-      if (!response.ok) throw new Error("Course data file not found");
+      const response = await fetch(
+        `http://localhost:5000/api/display-courses/${id}`,
+        {
+          credentials: "include", // send cookies if needed
+        }
+      );
+      if (!response.ok) throw new Error("Course not found");
       const data = await response.json();
-      if (!Array.isArray(data)) throw new Error("Invalid course data format");
-      const course = data.find((c) => c.id === id);
-      if (!course) throw new Error("Course not found");
-      setCourseData(course);
+      if (!data.course_json) throw new Error("Invalid course data format");
+      setCourseData(data.course_json);
     } catch (err) {
       setEnrollError(err.message);
       setCourseData(null);
@@ -275,7 +279,7 @@ const CourseDetailPage = () => {
                 </div>
 
                 <button
-                  onClick={() => navigate("/info")}
+                  onClick={() => navigate("/info", { state: { courseId: id } })}
                   className="inline-flex items-center justify-center gap-1 px-6 py-2 text-sm font-medium uppercase tracking-wide bg-orange-500 text-white border-2 border-orange-500 cursor-pointer   hover:bg-orange-600 hover:border-orange-600 w-full"
                 >
                   Enroll Now
