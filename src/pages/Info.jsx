@@ -105,12 +105,15 @@ const StudentInfoForm = () => {
     setBuyLoading(true);
 
     try {
-      const response = await fetch("http://localhost:5000/api/course-buy", {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        credentials: "include",
-        body: JSON.stringify(formData),
-      });
+      const response = await fetch(
+        `${import.meta.env.VITE_API_URL}/course-buy`,
+        {
+          method: "POST",
+          headers: { "Content-Type": "application/json" },
+          credentials: "include",
+          body: JSON.stringify(formData),
+        }
+      );
       const data = await response.json();
 
       if (response.ok && data.success) {

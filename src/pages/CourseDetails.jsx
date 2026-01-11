@@ -32,7 +32,7 @@ const CourseDetailPage = () => {
     setEnrollError("");
     try {
       const response = await fetch(
-        `http://localhost:5000/api/display-courses/${id}`,
+        `${import.meta.env.VITE_API_URL}/display-courses/${id}`,
         {
           credentials: "include", // send cookies if needed
         }
