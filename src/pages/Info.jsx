@@ -39,7 +39,7 @@ const StudentInfoForm = () => {
     const fetchCourses = async () => {
       try {
         const response = await fetch(
-          "https://app.skillspardha.com/api/display-courses",
+          "https://app.skillspardha.com/api/display-courses/names-ids",
           {
             method: "GET",
             headers: {
