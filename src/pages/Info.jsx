@@ -36,12 +36,27 @@ const StudentInfoForm = () => {
 
   // Fetch courses for dropdown
   useEffect(() => {
-    fetch(`https://app.skillspardha.com/api/display-courses/names-ids`, {
-      credentials: "include",
-    })
-      .then((res) => res.json())
-      .then((data) => setCourses(data))
-      .catch(() => setCourses([]));
+    const fetchCourses = async () => {
+      try {
+        const response = await fetch(
+          "https://app.skillspardha.com/api/display-courses",
+          {
+            method: "GET",
+            headers: {
+              Accept: "application/json",
+            },
+            cache: "no-store", // mobile-safe
+          }
+        );
+        const data = await response.json();
+        if (response.ok) {
+          setCourses(data.courses || []);
+        }
+      } catch (err) {
+        console.error("Error fetching courses:", err);
+      }
+    };
+    fetchCourses();
   }, []);
 
   const handleChange = (e) => {
@@ -110,7 +125,7 @@ const StudentInfoForm = () => {
         {
           method: "POST",
           headers: { "Content-Type": "application/json" },
-          credentials: "include",
+
           body: JSON.stringify(formData),
         }
       );
