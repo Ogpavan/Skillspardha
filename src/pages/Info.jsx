@@ -41,21 +41,24 @@ const StudentInfoForm = () => {
         const response = await fetch(
           "https://app.skillspardha.com/api/display-courses/names-ids",
           {
-            method: "GET",
-            headers: {
-              Accept: "application/json",
-            },
-            cache: "no-store", // mobile-safe
+            headers: { Accept: "application/json" },
+            cache: "no-store",
           }
         );
+
         const data = await response.json();
-        if (response.ok) {
-          setCourses(data.courses || []);
+
+        if (!response.ok) {
+          throw new Error("Failed to fetch courses");
         }
+
+        setCourses(Array.isArray(data) ? data : []);
       } catch (err) {
         console.error("Error fetching courses:", err);
+        setCourses([]);
       }
     };
+
     fetchCourses();
   }, []);
 
