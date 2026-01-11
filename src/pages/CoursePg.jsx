@@ -119,7 +119,10 @@ export default function CoursePg() {
   const currentCourses = courseCategories?.[activeCategory] || [];
 
   // All courses (for global search)
-  const allCourses = Object.values(courseCategories || {}).flat();
+  const allCourses = Object.values(courseCategories || {}).reduce(
+    (acc, val) => acc.concat(Array.isArray(val) ? val : []),
+    []
+  );
 
   // Final filtered list
   const filteredCourses = !searchQuery?.trim()
