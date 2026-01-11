@@ -23,21 +23,46 @@ export default function CoursePg() {
   // Fetch categories and courses from public/courses.json
   useEffect(() => {
     let mounted = true;
+
     setLoadingCourses(true);
-    fetch("https://app.skillspardha.com/api/display-courses/by-category")
-      .then((res) => res.json())
+
+    fetch("https://app.skillspardha.com/api/display-courses/by-category", {
+      method: "GET",
+      headers: {
+        Accept: "application/json",
+      },
+      cache: "no-store", // IMPORTANT for mobile + SW
+    })
+      .then(async (res) => {
+        const contentType = res.headers.get("content-type");
+
+        if (!res.ok) {
+          const text = await res.text();
+          throw new Error(`HTTP ${res.status}: ${text}`);
+        }
+
+        if (!contentType || !contentType.includes("application/json")) {
+          const text = await res.text();
+          throw new Error("Non-JSON response: " + text.slice(0, 200));
+        }
+
+        return res.json();
+      })
       .then((data) => {
         if (!mounted) return;
+
         setCourseCategories(data || {});
-        if (!activeCategory) {
-          const first = Object.keys(data || {})[0];
+
+        if (!activeCategory && data) {
+          const first = Object.keys(data)[0];
           if (first) setActiveCategory(first);
         }
       })
       .catch((err) => {
-        console.error("Failed to load courses from API", err);
+        console.error("❌ Mobile API error:", err.message);
       })
       .finally(() => mounted && setLoadingCourses(false));
+
     return () => {
       mounted = false;
     };
