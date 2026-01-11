@@ -5,6 +5,7 @@ import hackathon from "../assets/hackathon.jpg";
 import Navbar from "../components/Navbar.jsx";
 import Footer from "../components/Footer.jsx";
 import About_hackathon from "./About_hackathon.jsx";
+import Hackathon_form from "./Hackathon_form.jsx";
 
 export default function CoursePg() {
   const [scrollY, setScrollY] = useState(0);
@@ -316,6 +317,8 @@ export default function CoursePg() {
           }
         `}</style>
         </section>
+        <Hackathon_form />
+        
         <Footer />
       </div>
     </>

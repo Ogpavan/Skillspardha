@@ -7,6 +7,8 @@ import CourseDetails from "./pages/CourseDetails";
 import Contact from "./pages/Contact";
 import Hackathon from "./pages/Hackathon";
 import Info from "./pages/Info";
+import Hackathon_form from "./pages/Hackathon_form";
+
 
 function App() {
   return (
@@ -18,6 +20,7 @@ function App() {
     <Route path="/hackathon" element={<Hackathon />} />
     <Route path="/contact" element={<Contact />} />
     <Route path="/info" element={<Info />} />
+    <Route path="/hackathon_form" element={<Hackathon_form />} />
     </Routes>
   );
 }
