@@ -32,7 +32,7 @@ const CourseDetailPage = () => {
     setEnrollError("");
     try {
       const response = await fetch(
-        `${import.meta.env.VITE_API_URL}/display-courses/${id}`,
+        `https://app.skillspardha.com/api/display-courses/${id}`,
         {
           credentials: "include", // send cookies if needed
         }

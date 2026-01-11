@@ -106,7 +106,7 @@ const StudentInfoForm = () => {
 
     try {
       const response = await fetch(
-        `${import.meta.env.VITE_API_URL}/course-buy`,
+        "https://app.skillspardha.com/api/course-buy",
         {
           method: "POST",
           headers: { "Content-Type": "application/json" },
