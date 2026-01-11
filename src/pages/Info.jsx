@@ -65,7 +65,7 @@ const StudentInfoForm = () => {
       order_id: orderId,
       handler: async function (response) {
         // On successful payment, update payment_status in backend
-        await fetch(`http://localhost:5000/api/course-buy/mark-paid`, {
+        await fetch(`https://app.skillspardha.com/api/course-buy/mark-paid`, {
           method: "POST",
           headers: { "Content-Type": "application/json" },
           body: JSON.stringify({
