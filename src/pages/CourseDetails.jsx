@@ -34,7 +34,11 @@ const CourseDetailPage = () => {
       const response = await fetch(
         `https://app.skillspardha.com/api/display-courses/${id}`,
         {
-          credentials: "include", // send cookies if needed
+          method: "GET",
+          headers: {
+            Accept: "application/json",
+          },
+          cache: "no-store", // mobile-safe
         }
       );
       if (!response.ok) throw new Error("Course not found");
