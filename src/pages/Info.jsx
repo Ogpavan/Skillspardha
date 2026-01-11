@@ -36,7 +36,7 @@ const StudentInfoForm = () => {
 
   // Fetch courses for dropdown
   useEffect(() => {
-    fetch(`http://localhost:5000/api/display-courses/names-ids`, {
+    fetch(`https://app.skillspardha.com/api/display-courses/names-ids`, {
       credentials: "include",
     })
       .then((res) => res.json())
