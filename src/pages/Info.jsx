@@ -137,7 +137,7 @@ const StudentInfoForm = () => {
       if (response.ok && data.success) {
         // 1. Call backend to create Razorpay order
         const paymentRes = await fetch(
-          "http://localhost:5000/api/payment/create-order",
+          "https://app.skillspardha.com/api/payment/create-order",
           {
             method: "POST",
             headers: { "Content-Type": "application/json" },
