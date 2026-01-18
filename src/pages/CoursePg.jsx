@@ -121,7 +121,7 @@ export default function CoursePg() {
   // All courses (for global search)
   const allCourses = Object.values(courseCategories || {}).reduce(
     (acc, val) => acc.concat(Array.isArray(val) ? val : []),
-    []
+    [],
   );
 
   // Final filtered list
@@ -323,7 +323,11 @@ export default function CoursePg() {
                         <div className="md:w-80 shrink-0 relative">
                           <div className="aspect-video rounded-xl overflow-hidden bg-gray-100">
                             <img
-                              src={course.image}
+                              src={
+                                course.image?.startsWith("/uploads/")
+                                  ? `https://app.skillspardha.com/api${course.image}`
+                                  : course.image
+                              }
                               alt={course.title}
                               className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
                             />
@@ -381,8 +385,8 @@ export default function CoursePg() {
                                 onClick={() => {
                                   navigate(
                                     `/courses/${encodeURIComponent(
-                                      activeCategory
-                                    )}/${course.id}`
+                                      activeCategory,
+                                    )}/${course.id}`,
                                   );
                                 }}
                               >
