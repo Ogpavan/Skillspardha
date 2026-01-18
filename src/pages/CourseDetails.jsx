@@ -32,7 +32,7 @@ const CourseDetailPage = () => {
     setEnrollError("");
     try {
       const response = await fetch(
-        `https://app.skillspardha.com/api/display-courses/${id}`,
+        `https://app.skillspardha.com/api/display-courses/${id}/details`,
         {
           method: "GET",
           headers: {

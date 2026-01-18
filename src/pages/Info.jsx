@@ -43,7 +43,7 @@ const StudentInfoForm = () => {
           {
             headers: { Accept: "application/json" },
             cache: "no-store",
-          }
+          },
         );
 
         const data = await response.json();
@@ -130,7 +130,7 @@ const StudentInfoForm = () => {
           headers: { "Content-Type": "application/json" },
 
           body: JSON.stringify(formData),
-        }
+        },
       );
       const data = await response.json();
 
@@ -142,7 +142,7 @@ const StudentInfoForm = () => {
             method: "POST",
             headers: { "Content-Type": "application/json" },
             body: JSON.stringify({ enrollmentId: data.enrollmentId }),
-          }
+          },
         );
         const paymentData = await paymentRes.json();
 

@@ -26,7 +26,7 @@ export default function CoursePg() {
 
     setLoadingCourses(true);
 
-    fetch("https://app.skillspardha.com/api/display-courses/by-category", {
+    fetch(`https://app.skillspardha.com/api/display-courses/by-category`, {
       method: "GET",
       headers: {
         Accept: "application/json",
@@ -375,7 +375,7 @@ export default function CoursePg() {
                                 </span>
                                 <div className="flex">
                                   <span className="text-4xl font-black text-gray-900">
-                                    {course.price || "₹5,399"}
+                                    {course.price}
                                   </span>
                                 </div>
                               </div>
