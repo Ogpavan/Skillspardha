@@ -39,7 +39,7 @@ const CourseDetailPage = () => {
             Accept: "application/json",
           },
           cache: "no-store", // mobile-safe
-        }
+        },
       );
       if (!response.ok) throw new Error("Course not found");
       const data = await response.json();
@@ -273,14 +273,14 @@ const CourseDetailPage = () => {
               </div>
 
               <div className="border-t pt-6">
-                <div className="flex items-baseline gap-3 mb-6">
+                {/* <div className="flex items-baseline gap-3 mb-6">
                   <span className="text-4xl font-bold">
                     {courseData.price[1]}
                   </span>
                   <span className="text-xl text-gray-400 line-through">
                     {courseData.price[0]}
                   </span>
-                </div>
+                </div> */}
 
                 <button
                   onClick={() => navigate("/info", { state: { courseId: id } })}
