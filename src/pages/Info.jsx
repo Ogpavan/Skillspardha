@@ -22,14 +22,14 @@ const StudentInfoForm = () => {
   const preselectedCourseId = location.state?.courseId || "";
 
   const [formData, setFormData] = useState({
-    name: "",
+    full_name: "",
     email: "",
     phone: "",
-    collegeName: "",
-    batch: "",
+    college_name: "",
+    batch_year: "",
     semester: "",
-    courseInterested: preselectedCourseId,
-    paymentMode: "",
+    course_id: preselectedCourseId,
+    payment_mode: "",
   });
   const [buyLoading, setBuyLoading] = useState(false);
   const [courses, setCourses] = useState([]);
@@ -78,7 +78,7 @@ const StudentInfoForm = () => {
       key,
       amount,
       currency: "INR",
-      name: "Your Company Name",
+      name: "Skillspardha",
       description: "Course Enrollment",
       order_id: orderId,
       handler: async function (response) {
@@ -96,7 +96,7 @@ const StudentInfoForm = () => {
         alert("Payment successful! Enrollment complete.");
       },
       prefill: {
-        name: formData.name,
+        name: formData.full_name,
         email: formData.email,
         contact: formData.phone,
       },
@@ -108,14 +108,14 @@ const StudentInfoForm = () => {
 
   const handleSubmit = async () => {
     if (
-      !formData.name ||
+      !formData.full_name ||
       !formData.email ||
       !formData.phone ||
-      !formData.collegeName ||
-      !formData.batch ||
+      !formData.college_name ||
+      !formData.batch_year ||
       !formData.semester ||
-      !formData.courseInterested ||
-      !formData.paymentMode
+      !formData.course_id ||
+      !formData.payment_mode
     ) {
       alert("Please fill in all fields");
       return;
@@ -128,7 +128,6 @@ const StudentInfoForm = () => {
         {
           method: "POST",
           headers: { "Content-Type": "application/json" },
-
           body: JSON.stringify(formData),
         },
       );
@@ -141,7 +140,7 @@ const StudentInfoForm = () => {
           {
             method: "POST",
             headers: { "Content-Type": "application/json" },
-            body: JSON.stringify({ enrollmentId: data.enrollmentId }),
+            body: JSON.stringify({ enrollmentId: data.enrollment_id }),
           },
         );
         const paymentData = await paymentRes.json();
@@ -151,10 +150,10 @@ const StudentInfoForm = () => {
           const script = document.createElement("script");
           script.src = "https://checkout.razorpay.com/v1/checkout.js";
           script.onload = () =>
-            openRazorpay({ ...paymentData, enrollmentId: data.enrollmentId });
+            openRazorpay({ ...paymentData, enrollmentId: data.enrollment_id });
           document.body.appendChild(script);
         } else {
-          openRazorpay({ ...paymentData, enrollmentId: data.enrollmentId });
+          openRazorpay({ ...paymentData, enrollmentId: data.enrollment_id });
         }
       } else {
         alert(data.error || "Enrollment failed");
@@ -211,8 +210,8 @@ const StudentInfoForm = () => {
                     </div>
                     <input
                       type="text"
-                      name="name"
-                      value={formData.name}
+                      name="full_name"
+                      value={formData.full_name}
                       onChange={handleChange}
                       className="w-full pl-9 pr-3 py-2 bg-white border border-gray-300 rounded-lg text-sm text-gray-900 placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-orange-500 focus:border-transparent transition-all"
                       placeholder="Enter your full name"
@@ -271,8 +270,8 @@ const StudentInfoForm = () => {
                     </div>
                     <input
                       type="text"
-                      name="collegeName"
-                      value={formData.collegeName}
+                      name="college_name"
+                      value={formData.college_name}
                       onChange={handleChange}
                       className="w-full pl-9 pr-3 py-2 bg-white border border-gray-300 rounded-lg text-sm text-gray-900 placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-orange-500 focus:border-transparent transition-all"
                       placeholder="Enter your college name"
@@ -292,8 +291,8 @@ const StudentInfoForm = () => {
                         <Calendar className="h-4 w-4 text-gray-400" />
                       </div>
                       <select
-                        name="batch"
-                        value={formData.batch}
+                        name="batch_year"
+                        value={formData.batch_year}
                         onChange={handleChange}
                         className="w-full pl-9 pr-3 py-2 bg-white border border-gray-300 rounded-lg text-sm text-gray-900 focus:outline-none focus:ring-2 focus:ring-orange-500 focus:border-transparent transition-all"
                       >
@@ -339,8 +338,8 @@ const StudentInfoForm = () => {
                     Course Interested In
                   </label>
                   <select
-                    name="courseInterested"
-                    value={formData.courseInterested}
+                    name="course_id"
+                    value={formData.course_id}
                     onChange={handleChange}
                     className="w-full px-3 py-2 bg-white border border-gray-300 rounded-lg text-sm text-gray-900 focus:outline-none focus:ring-2 focus:ring-orange-500 focus:border-transparent transition-all appearance-none cursor-pointer"
                   >
@@ -362,10 +361,10 @@ const StudentInfoForm = () => {
                     <button
                       type="button"
                       onClick={() =>
-                        setFormData({ ...formData, paymentMode: "UPI" })
+                        setFormData({ ...formData, payment_mode: "UPI" })
                       }
                       className={`flex items-center justify-center gap-2 px-3 py-2 rounded-lg border-2 transition-all ${
-                        formData.paymentMode === "UPI"
+                        formData.payment_mode === "UPI"
                           ? "bg-orange-50 border-orange-500 text-orange-700"
                           : "bg-white border-gray-300 text-gray-700 hover:border-orange-300"
                       }`}
@@ -376,10 +375,13 @@ const StudentInfoForm = () => {
                     <button
                       type="button"
                       onClick={() =>
-                        setFormData({ ...formData, paymentMode: "Net Banking" })
+                        setFormData({
+                          ...formData,
+                          payment_mode: "Net Banking",
+                        })
                       }
                       className={`flex items-center justify-center gap-2 px-3 py-2 rounded-lg border-2 transition-all ${
-                        formData.paymentMode === "Net Banking"
+                        formData.payment_mode === "Net Banking"
                           ? "bg-orange-50 border-orange-500 text-orange-700"
                           : "bg-white border-gray-300 text-gray-700 hover:border-orange-300"
                       }`}
