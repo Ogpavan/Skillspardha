@@ -125,16 +125,17 @@ const CourseDetailPage = () => {
             <div className="w-1/2 rounded-2xl overflow-hidden shadow-lg">
               <img
                 src={
-                  courseData.image ||
-                  courseData.meta[3] ||
-                  "/images/default-course.jpg"
+                  courseData.image && courseData.image.trim() !== ""
+                    ? courseData.image.startsWith("/uploads")
+                      ? `https://app.skillspardha.com${courseData.image}`
+                      : courseData.image
+                    : "/images/default-course.jpg"
                 }
-                alt={courseData.t}
+                alt={courseData.title || "Course Image"}
                 className="w-full h-80 object-cover"
                 onError={(e) => {
-                  e.target.style.display = "none";
-                  e.target.parentElement.innerHTML =
-                    '<div class="w-full h-80 bg-gradient-to-r from-orange-400 via-purple-400 to-yellow-400 opacity-20"></div>';
+                  e.target.onerror = null;
+                  e.target.src = "/images/default-course.jpg";
                 }}
               />
             </div>
