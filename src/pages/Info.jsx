@@ -106,6 +106,7 @@ const StudentInfoForm = () => {
     rzp.open();
   };
 
+  // ...existing code...
   const handleSubmit = async () => {
     if (
       !formData.full_name ||
@@ -146,24 +147,70 @@ const StudentInfoForm = () => {
         const paymentData = await paymentRes.json();
 
         // 2. Load Razorpay script if not already loaded
+        const openRazorpayAndWait = (options) => {
+          return new Promise((resolve) => {
+            const rzp = new window.Razorpay({
+              ...options,
+              handler: async function (response) {
+                // On successful payment, update payment_status in backend
+                try {
+                  await fetch(
+                    `https://app.skillspardha.com/api/course-buy/mark-paid`,
+                    {
+                      method: "POST",
+                      headers: { "Content-Type": "application/json" },
+                      body: JSON.stringify({
+                        enrollmentId: options.enrollmentId,
+                        razorpay_payment_id: response.razorpay_payment_id,
+                        razorpay_order_id: response.razorpay_order_id,
+                        razorpay_signature: response.razorpay_signature,
+                      }),
+                    },
+                  );
+                  alert("Payment successful! Enrollment complete.");
+                } catch (err) {
+                  alert("Payment succeeded but marking as paid failed.");
+                } finally {
+                  setBuyLoading(false);
+                  resolve();
+                }
+              },
+              modal: {
+                ondismiss: function () {
+                  setBuyLoading(false);
+                  resolve();
+                },
+              },
+            });
+            rzp.open();
+          });
+        };
+
         if (!window.Razorpay) {
           const script = document.createElement("script");
           script.src = "https://checkout.razorpay.com/v1/checkout.js";
           script.onload = () =>
-            openRazorpay({ ...paymentData, enrollmentId: data.enrollment_id });
+            openRazorpayAndWait({
+              ...paymentData,
+              enrollmentId: data.enrollment_id,
+            });
           document.body.appendChild(script);
         } else {
-          openRazorpay({ ...paymentData, enrollmentId: data.enrollment_id });
+          await openRazorpayAndWait({
+            ...paymentData,
+            enrollmentId: data.enrollment_id,
+          });
         }
       } else {
         alert(data.error || "Enrollment failed");
+        setBuyLoading(false);
       }
     } catch (err) {
       alert("Server error. Please try again later.");
-    } finally {
       setBuyLoading(false);
     }
   };
+  // ...existing code...
 
   const handleBack = () => {
     if (window.history.length > 1) {
